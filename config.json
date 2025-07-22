@@ -1,0 +1,11 @@
+{
+  "devUrl": "http://ready-for-feedback3.com/internship/luhovyi/lysoclearwla/",
+  "themeName": "lysoclearwla",
+  "proxyUrl": "https://localhost:3000",
+  "open": false,
+  "bsWatchFiles": [
+    "inc/**/*.php",
+    "parts/**/*.php",
+    "templates/**/*.php"
+  ]
+}
