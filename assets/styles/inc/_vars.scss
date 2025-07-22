@@ -1,12 +1,14 @@
 // Project variables
 // Note: Prefer using framework variables
 
-//$blue: #1a608b;
-//
-//$text-color: #333;
+$blue: #00a2ff;
+$dark-blue: #00263c;
+$light-blue: #00a9ff;
 
-//$primary-color: $blue;
-//$sub-color: $primary-color;
+$text-color: #333;
+
+$primary-color: $blue;
+$sub-color: $primary-color;
 
 $font: 'Open Sans', serif;
 //$sub-font: $font;
@@ -21,4 +23,8 @@ $fa: 'Font Awesome 6 Free';
 // Custom fonts
 :root {
   --content-size: 80rem;
+  --primary-blue: #00a2ff;
+  --dark-blue: #00263c;
+  --light-blue: #00a9ff;
+  --white-text: #ffffff;
 }

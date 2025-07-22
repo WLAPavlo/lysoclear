@@ -22,6 +22,26 @@ main {
   margin-bottom: 0;
 }
 
+/* Global text styles for slider and other blue sections */
+.blue-section,
+.home-slide__caption {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #ffffff !important;
+    font-size: 26px !important;
+  }
+
+  p,
+  .text-content {
+    color: #ffffff !important;
+    font-size: 15px !important;
+  }
+}
+
 /* Preloader */
 
 @keyframes spin {

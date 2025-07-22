@@ -1,0 +1,83 @@
+{
+  "key": "group_testimonials_section",
+  "title": "Testimonials Section",
+  "fields": [
+    {
+      "key": "field_testimonials_items",
+      "label": "Testimonials",
+      "name": "testimonials_items",
+      "type": "repeater",
+      "instructions": "Add client testimonials",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "collapsed": "",
+      "min": 0,
+      "max": 0,
+      "layout": "block",
+      "button_label": "Add Testimonial",
+      "sub_fields": [
+        {
+          "key": "field_testimonial_text",
+          "label": "Testimonial Text",
+          "name": "testimonial_text",
+          "type": "textarea",
+          "instructions": "Enter the client's testimonial text",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "70",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "Enter testimonial...",
+          "maxlength": "",
+          "rows": 4,
+          "new_lines": ""
+        },
+        {
+          "key": "field_testimonial_author",
+          "label": "Author Name",
+          "name": "testimonial_author",
+          "type": "text",
+          "instructions": "Enter the author's name",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "30",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "Author name",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/template-home.php"
+      }
+    ]
+  ],
+  "menu_order": 2,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Testimonials block for home page",
+  "modified": 1640995400
+}

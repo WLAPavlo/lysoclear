@@ -1,23 +1,89 @@
+// Header styles - white background header separate from slider
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .logo {
   h1 {
     font-size: 0;
+    margin: 0;
   }
 
   a {
     display: inline-block;
+    text-decoration: none;
   }
 
   img {
-    max-height: 150px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+  }
+}
+
+// Override Foundation's top-bar with higher specificity
+.header .top-bar {
+  background: transparent;
+  padding: 0;
+
+  ul {
+    background: transparent;
+  }
+}
+
+// Header menu styling with higher specificity than Foundation
+.header .header-menu.menu {
+  justify-content: flex-end;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+
+  li {
+    background: transparent;
+
+    a {
+      color: #00263c; // Стандартний колір тексту меню
+      font-size: 15px; // Розмір тексту меню
+      font-weight: 500;
+      line-height: 40px;
+      padding: 8px 16px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+
+      &:hover,
+      &:focus {
+        color: #00a9ff;
+      }
+    }
+
+    // Активна сторінка - колір #00a9ff
+    &.current-menu-item,
+    &.current_page_ancestor,
+    &.current_page_parent,
+    &.current-menu-ancestor {
+      a {
+        color: #00a9ff !important;
+      }
+    }
   }
 }
 
 @include breakpoint(small down) {
-  /* TOP BAR Mobile STYLING */
-
-  .menu-grid-container {
-    padding-left: 0;
-    padding-right: 0;
+  // Mobile menu styling with higher specificity
+  .header .menu-grid-container {
+    padding-left: 15px;
+    padding-right: 15px;
 
     .grid-margin-x {
       margin-left: 0;
@@ -31,78 +97,87 @@
     }
   }
 
-  //.title-bar {
-  //  line-height: 45px;
-  //
-  //  .menu-icon {
-  //    padding: 0;
-  //    border: none;
-  //    background-color: transparent;
-  //
-  //    //@include menu-icon($white, $white, 30px, 24px, 3px);
-  //  }
-  //}
+  .header .title-bar {
+    background: transparent;
+    padding: 10px 0;
+    border: none;
 
-  .top-bar {
-    display: none;
-    background: $primary-color; /* menu list background color */
+    .menu-icon {
+      @include menu-icon(#00263c, #00a9ff, 30px, 24px, 3px);
+      padding: 0;
+      border: none;
+      background-color: transparent;
+    }
+
+    .title-bar-title {
+      color: #00263c;
+      font-weight: 500;
+    }
   }
 
-  .header-menu {
+  .header .top-bar {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+
+  .header .header-menu {
     background: transparent;
 
     li {
-      > a {
-        background: $primary-color; /* menu item background color */
-        color: $white; /* menu item text color */
-        line-height: 45px;
+      background: transparent;
 
+      a {
+        background: transparent;
+        color: #00263c;
+        line-height: 45px;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(240, 240, 240, 0.3);
+
+        &:hover,
         &:focus {
-          &,
-          & + .submenu-toggle {
-            background: darken(
-              $primary-color,
-              5
-            ); /* menu item background color on hover */
-          }
+          color: #00a9ff;
         }
       }
 
       &.current-menu-item,
       &.current_page_ancestor,
-      &.current_page_parent {
-        > a,
-        .submenu-toggle {
-          background: lighten(
-            $primary-color,
-            5
-          ); /* current/parent menu item background color */
+      &.current_page_parent,
+      &.current-menu-ancestor {
+        a {
+          color: #00a9ff !important;
         }
       }
 
       &[aria-expanded='true'] {
-        > a,
-        .submenu-toggle {
-          background: darken(
-            $primary-color,
-            3
-          ); /* menu item background color on open dropdown */
+        a {
+          color: #00a9ff;
         }
       }
     }
 
     .submenu-toggle {
       padding: 0;
+      background: transparent;
+
+      &::after {
+        color: #00263c;
+      }
     }
 
     .submenu {
       a {
         padding-left: #{get-side($accordionmenu-padding, 'left') * 1.65};
+        background: rgba(248, 249, 250, 0.8);
       }
 
       .submenu {
         a {
           padding-left: #{get-side($accordionmenu-padding, 'left') * 2.3};
+          background: rgba(240, 240, 240, 0.8);
         }
       }
     }
@@ -110,88 +185,90 @@
 }
 
 @include breakpoint(medium) {
-  /* TOP BAR STYLING */
-
-  .header-menu.menu {
-    /* Align menu items to the right */
-    // justify-content: flex-end;
-
-    /* Align menu items to the center */
-    // justify-content: center;
-
+  // Desktop menu styling with higher specificity
+  .header .header-menu.menu {
     li {
-      > a {
-        /* Regular menu item style */
-        line-height: 40px;
-        color: $primary-color;
-
-        &:hover {
-          /* menu item style on hover */
-          background: $primary-color;
-          color: $white;
-        }
-      }
-
-      &.current-menu-item,
-      &.current_page_ancestor,
-      &.current_page_parent {
-        > a {
-          /* Style of Current page and Ancestor page */
-          background: $primary-color;
-          color: $white;
-        }
-      }
-
       &.has-dropdown {
-        > a {
-          /* Style of item with dropdown */
+        a {
+          position: relative;
+
+          &::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 12px;
+          }
         }
       }
 
-      &.is-active > a {
-        /* Parent link style on dropdown hover */
-        background: $white;
-        color: $primary-color;
+      &.is-active a {
+        background: rgba(0, 169, 255, 0.1);
+        color: #00a9ff;
       }
     }
 
-    /* Dropdown item styling */
-
+    // Dropdown styling
     .submenu {
       z-index: 11;
       display: none;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      min-width: 200px;
 
       &.js-dropdown-active {
         display: block;
       }
 
       li {
-        > a {
-          /* Regular link in dropdown */
-          background: $white;
-          color: $primary-color;
-          line-height: 30px;
+        background: transparent;
+
+        a {
+          background: transparent;
+          color: #00263c;
+          line-height: 35px;
+          font-size: 14px;
+          padding: 8px 20px;
+          border-bottom: 1px solid rgba(240, 240, 240, 0.3);
 
           &:hover {
-            /* Dropdown link on hover */
-            background: lighten($primary-color, 10);
-            color: $white;
+            background: rgba(0, 169, 255, 0.1);
+            color: #00a9ff;
           }
+        }
+
+        &:last-child a {
+          border-bottom: none;
         }
 
         &.current-menu-item,
         &.current_page_ancestor,
-        &.current_page_parent {
-          > a {
-            background: lighten($primary-color, 10);
-            color: $white;
+        &.current_page_parent,
+        &.current-menu-ancestor {
+          a {
+            background: rgba(0, 169, 255, 0.1);
+            color: #00a9ff !important;
           }
         }
       }
-
-      .submenu {
-        /* Styles for 2nd level dropdown menu */
-      }
     }
   }
+}
+
+// Main content positioning
+.main-content {
+  position: relative;
+}
+
+// Remove special styling for home page - header is always white now
+body .main-content {
+  padding-top: 50px;
+}
+
+// Home page specific - no top padding since header is separate
+.home .main-content,
+.page-template-template-home .main-content {
+  padding-top: 0;
 }

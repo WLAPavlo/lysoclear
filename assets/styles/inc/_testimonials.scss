@@ -1,0 +1,190 @@
+/* ---------------------------------------
+	Testimonials Section
+--------------------------------------- */
+
+.testimonials-section {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+  position: relative;
+
+  @include breakpoint(small down) {
+    padding: 60px 0;
+  }
+}
+
+.testimonials-slider {
+  position: relative;
+  overflow: hidden;
+
+  .slick-dots {
+    bottom: -50px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex !important;
+    justify-content: center;
+    gap: 12px;
+
+    li {
+      width: 12px;
+      height: 12px;
+      margin: 0;
+
+      button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(0, 162, 255, 0.3);
+        padding: 0;
+        font-size: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover {
+          background-color: rgba(0, 162, 255, 0.6);
+          transform: scale(1.2);
+        }
+      }
+
+      &.slick-active button {
+        background-color: #00a2ff;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .slick-arrow {
+    display: none !important;
+  }
+}
+
+.testimonial-slide {
+  padding: 0 15px;
+  outline: none;
+}
+
+.testimonial-item {
+  background-color: #ffffff;
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  @include breakpoint(small down) {
+    padding: 40px 30px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.testimonial-quote {
+  margin-bottom: 30px;
+
+  .quote-icon {
+    width: 48px;
+    height: 48px;
+    color: #00a2ff;
+    opacity: 0.8;
+
+    @include breakpoint(small down) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.testimonial-text {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #00263c;
+  font-style: italic;
+  margin-bottom: 30px;
+  font-weight: 400;
+  border: none;
+  padding: 0;
+  background: none;
+
+  @include breakpoint(small down) {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  @include breakpoint(medium down) {
+    font-size: 19px;
+  }
+}
+
+.testimonial-author {
+  font-size: 16px;
+  color: #00a2ff;
+  font-weight: 600;
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+
+  @include breakpoint(small down) {
+    font-size: 15px;
+  }
+
+  &::before {
+    content: '—';
+    margin-right: 8px;
+    color: #00a2ff;
+    font-weight: normal;
+  }
+}
+
+// Responsive adjustments
+@include breakpoint(large) {
+  .testimonials-slider {
+    .slick-list {
+      padding: 0 50px;
+    }
+  }
+}
+
+@include breakpoint(medium down) {
+  .testimonials-slider {
+    .slick-list {
+      padding: 0 20px;
+    }
+  }
+}
+
+@include breakpoint(small down) {
+  .testimonials-slider {
+    .slick-list {
+      padding: 0 10px;
+    }
+  }
+}
+// Animation for testimonial items
+.testimonial-item {
+  opacity: 0.7;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Ensure current slide is always visible
+.slick-current .testimonial-item {
+  opacity: 1;
+  transform: translateY(0);
+}

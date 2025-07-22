@@ -1,0 +1,163 @@
+{
+  "key": "group_flexible_content",
+  "title": "Flexible Content",
+  "fields": [
+    {
+      "key": "field_flexible_content",
+      "label": "Flexible Content",
+      "name": "flexible_content",
+      "type": "flexible_content",
+      "instructions": "Add flexible content blocks",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": {
+        "layout_image_text": {
+          "key": "layout_image_text",
+          "name": "image_text",
+          "label": "Image + Text",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_layout_type",
+              "label": "Layout Type",
+              "name": "layout_type",
+              "type": "select",
+              "instructions": "Choose layout direction",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "image_left": "Image Left, Text Right",
+                "image_right": "Image Right, Text Left"
+              },
+              "default_value": "image_left",
+              "allow_null": 0,
+              "multiple": 0,
+              "ui": 1,
+              "return_format": "value",
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_background_color",
+              "label": "Background Color",
+              "name": "background_color",
+              "type": "Color Picker",
+              "description": '',
+              "default_value": "#ffffff"
+            },
+            {
+              "key": "field_content_image",
+              "label": "Image",
+              "name": "content_image",
+              "type": "image",
+              "instructions": "Upload image for the block",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "medium",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
+              "key": "field_content_title",
+              "label": "Title",
+              "name": "content_title",
+              "type": "text",
+              "instructions": "Enter block title",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": "",
+              "maxlength": ""
+            },
+            {
+              "key": "field_content_text",
+              "label": "Content",
+              "name": "content_text",
+              "type": "wysiwyg",
+              "instructions": "Enter block content",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "tabs": "visual",
+              "toolbar": "basic",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_content_button",
+              "label": "Button",
+              "name": "content_button",
+              "type": "link",
+              "instructions": "Add button link (optional)",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "button_label": "Add Block",
+      "min": "",
+      "max": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/template-home.php"
+      }
+    ]
+  ],
+  "menu_order": 1,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Flexible content blocks for home page",
+  "modified": 1640995300
+}

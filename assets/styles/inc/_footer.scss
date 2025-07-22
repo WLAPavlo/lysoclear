@@ -1,36 +1,98 @@
 .footer {
   margin-top: auto;
-}
 
-.footer__logo {
-  img {
-    max-height: 120px;
-  }
-}
+  &__cta {
+    background-color: #006ba8;
+    padding: 40px 0;
+    text-align: center;
+    color: #ffffff;
 
-.footer__sp {
-  text-align: right;
-}
+    h3 {
+      color: #ffffff;
+      font-size: 26px;
+      margin-bottom: 0;
+      font-weight: bold;
+      line-height: 1.2;
 
-.footer-menu {
-  @include list-unstyled;
+      @include breakpoint(small down) {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+    }
 
-  text-align: center;
+    .button {
+      background-color: #00a2ff;
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 4px;
+      margin-left: 30px;
+      transition: all 0.3s ease;
+      text-transform: none;
+      letter-spacing: normal;
 
-  li {
-    display: inline-block;
+      @include breakpoint(small down) {
+        margin-left: 0;
+        margin-top: 20px;
+        display: block;
+        width: 200px;
+        margin: 20px auto 0;
+      }
 
-    a {
-      display: block;
-      padding: 5px 10px;
+      &:hover {
+        background-color: darken(#00a2ff, 10%);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 162, 255, 0.3);
+      }
+    }
+
+    .grid-x {
+      align-items: center;
     }
   }
-}
 
-.footer__copy {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: $light-gray;
-  font-size: 12px;
-  text-align: center;
+  &__bottom {
+    background-color: #00263c;
+    padding: 20px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: normal;
+
+    .footer-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+
+      @include breakpoint(small down) {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+
+        &::after {
+          content: '•';
+          margin: 0 20px;
+          color: rgba(255, 255, 255, 0.6);
+
+          @include breakpoint(small down) {
+            display: none;
+          }
+        }
+
+        &:last-child::after {
+          display: none;
+        }
+      }
+    }
+  }
 }

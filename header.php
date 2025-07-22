@@ -2,9 +2,6 @@
 /**
  * Header.
  */
-
-use theme\FoundationNavigation;
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -35,7 +32,10 @@ use theme\FoundationNavigation;
             <div class="medium-4 small-12 cell">
                 <div class="logo text-center medium-text-left">
                     <h1>
-                        <?php show_custom_logo(); ?><span class="show-for-sr"><?php echo get_bloginfo('name'); ?></span>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+                            <?php show_custom_logo(); ?>
+                            <span class="show-for-sr"><?php echo get_bloginfo('name'); ?></span>
+                        </a>
                     </h1>
                 </div>
             </div>
@@ -52,7 +52,6 @@ use theme\FoundationNavigation;
                             'theme_location' => 'header-menu',
                             'menu_class' => 'menu header-menu',
                             'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
-                            'walker' => new FoundationNavigation(),
                         ]); ?>
                     </nav>
                 <?php } ?>

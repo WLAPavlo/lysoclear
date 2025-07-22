@@ -10,6 +10,18 @@ get_header(); ?>
 } ?>
 <!--END of HOME PAGE SLIDER-->
 
+<!-- FEATURES SECTION -->
+<?php get_template_part('parts/features-section'); ?>
+<!-- END FEATURES SECTION -->
+
+<!-- FLEXIBLE CONTENT -->
+<?php get_template_part('parts/flexible-content'); ?>
+<!-- END FLEXIBLE CONTENT -->
+
+<!-- TESTIMONIALS SECTION -->
+<?php get_template_part('parts/testimonials-section'); ?>
+<!-- END TESTIMONIALS SECTION -->
+
 <!-- BEGIN of main content -->
 <div class="grid-container">
     <div class="grid-x grid-margin-x">

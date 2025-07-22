@@ -63,6 +63,7 @@ comment or delete styles below */
 /* -----------------------------------------
   Header
 ----------------------------------------- */
+// Header styles must come AFTER Foundation to override properly
 @import 'inc/header';
 
 /* -----------------------------------------
@@ -114,3 +115,5 @@ comment or delete styles below */
    Gutenberg blocks
 ----------------------------------------- */
 //@import '../blocks/gutenberg/**/styles.scss';
+
+@import 'inc/testimonials';

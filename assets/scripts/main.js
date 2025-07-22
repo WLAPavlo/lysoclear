@@ -64,10 +64,33 @@ function resizeVideo() {
  * Scripts which runs after DOM load
  */
 $(document).on('ready', function () {
+  // Header is now always white - no scroll effects needed
+
   /**
    * Make elements equal height
    */
   $('.matchHeight').matchHeight();
+
+  /**
+   * Initialize testimonials slider
+   */
+  if ($('#testimonials-slider').length) {
+    $('#testimonials-slider').slick({
+      dots: true,
+      arrows: false,
+      infinite: true,
+      speed: 500,
+      fade: false,
+      cssEase: 'ease',
+      autoplay: true,
+      autoplaySpeed: 5000,
+      pauseOnHover: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+      rows: 0, // Prevent generating extra markup
+    });
+  }
 
   /**
    * IE Object-fit cover polyfill
