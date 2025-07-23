@@ -67,6 +67,36 @@ $(document).on('ready', function () {
   // Header is now always white - no scroll effects needed
 
   /**
+   * Mobile menu toggle functionality
+   */
+  $('.mobile-menu-toggle').on('click', function () {
+    const $hamburger = $(this).find('.hamburger');
+    const $mobileMenu = $('.mobile-menu');
+    const $overlay = $('.mobile-menu-overlay');
+
+    $hamburger.toggleClass('is-active');
+    $mobileMenu.toggleClass('is-open');
+    $overlay.toggleClass('is-open');
+    $('body').toggleClass('mobile-menu-open');
+  });
+
+  // Close mobile menu when clicking overlay
+  $('.mobile-menu-overlay').on('click', function () {
+    $('.hamburger').removeClass('is-active');
+    $('.mobile-menu').removeClass('is-open');
+    $('.mobile-menu-overlay').removeClass('is-open');
+    $('body').removeClass('mobile-menu-open');
+  });
+
+  // Close mobile menu on menu item click
+  $('.mobile-menu .header-menu a').on('click', function () {
+    $('.hamburger').removeClass('is-active');
+    $('.mobile-menu').removeClass('is-open');
+    $('.mobile-menu-overlay').removeClass('is-open');
+    $('body').removeClass('mobile-menu-open');
+  });
+
+  /**
    * Make elements equal height
    */
   $('.matchHeight').matchHeight();
@@ -74,21 +104,20 @@ $(document).on('ready', function () {
   /**
    * Initialize testimonials slider
    */
-  if ($('#testimonials-slider').length) {
+  if ($('#testimonials-slider').length && typeof $.fn.slick === 'function') {
     $('#testimonials-slider').slick({
       dots: true,
       arrows: false,
       infinite: true,
-      speed: 500,
-      fade: false,
+      speed: 600,
+      fade: true,
       cssEase: 'ease',
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 4000,
       pauseOnHover: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      adaptiveHeight: true,
-      rows: 0, // Prevent generating extra markup
+      rows: 0,
     });
   }
 
@@ -213,11 +242,10 @@ $(document).on('ready', function () {
    * Close responsive menu on orientation change
    */
   $(window).on('orientationchange', function () {
-    setTimeout(function () {
-      if ($('.menu-icon').hasClass('is-active') && window.innerWidth < 641) {
-        $('[data-responsive-toggle="main-menu"]').foundation('toggleMenu');
-      }
-    }, 200);
+    $('.hamburger').removeClass('is-active');
+    $('.mobile-menu').removeClass('is-open');
+    $('.mobile-menu-overlay').removeClass('is-open');
+    $('body').removeClass('mobile-menu-open');
   });
 
   resizeVideo();

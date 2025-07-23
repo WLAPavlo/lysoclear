@@ -42,13 +42,13 @@
                         $address = get_field('address', 'options');
                         $email = get_field('email', 'options');
                         $phone = get_field('phone', 'options');
-
+                        $year = date('Y');
                         ?>
 
 
 
                         <?php if ($name && $copyright) { ?>
-                            <span><?php echo esc_html($name); ?>  <?php echo esc_html($copyright); ?></span>
+                            <span><?php echo esc_html($name); ?> © <?php echo $year; ?></span>
                         <?php } ?>
 
                         <?php if ($address) { ?>

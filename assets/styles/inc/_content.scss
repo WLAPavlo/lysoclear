@@ -1,6 +1,26 @@
 .main-content {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include breakpoint(xlarge) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @include breakpoint(large only) {
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
+
+  @include breakpoint(medium only) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  @include breakpoint(small down) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 /* 404 page */

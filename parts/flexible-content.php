@@ -2,7 +2,8 @@
     <?php
     // Function to determine if color is dark
     if (!function_exists('is_dark_color')) {
-        function is_dark_color($hex_color) {
+        function is_dark_color($hex_color)
+        {
             // Check if color is empty or null
             if (empty($hex_color)) {
                 return false; // Default to light if no color
@@ -17,7 +18,7 @@
             }
 
             // Convert 3-character hex to 6-character
-            if (strlen($hex_color) == 3) {
+            if (3 == strlen($hex_color)) {
                 $hex_color = $hex_color[0] . $hex_color[0] . $hex_color[1] . $hex_color[1] . $hex_color[2] . $hex_color[2];
             }
 
@@ -39,7 +40,7 @@
             the_row();
             $layout = get_row_layout();
 
-            if ($layout == 'image_text') {
+            if ('image_text' == $layout) {
                 $layout_type = get_sub_field('layout_type');
                 $background_color = get_sub_field('background_color') ?: '#ffffff';
                 $image = get_sub_field('content_image');

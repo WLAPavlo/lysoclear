@@ -1,4 +1,4 @@
-// Header styles - white background header separate from slider
+// Header styles - clean white background header
 .header {
   position: relative;
   top: 0;
@@ -9,6 +9,17 @@
   padding: 15px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  @include breakpoint(small down) {
+    padding: 12px 0;
+  }
+
+  .menu-grid-container {
+    .grid-x {
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
 }
 
 .logo {
@@ -26,116 +37,40 @@
     max-height: 50px;
     width: auto;
     height: auto;
-  }
-}
 
-// Override Foundation's top-bar with higher specificity
-.header .top-bar {
-  background: transparent;
-  padding: 0;
-
-  ul {
-    background: transparent;
-  }
-}
-
-// Header menu styling with higher specificity than Foundation
-.header .header-menu.menu {
-  justify-content: flex-end;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-
-  li {
-    background: transparent;
-
-    a {
-      color: #00263c; // Стандартний колір тексту меню
-      font-size: 15px; // Розмір тексту меню
-      font-weight: 500;
-      line-height: 40px;
-      padding: 8px 16px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      background: transparent;
-      border: none;
-      border-radius: 4px;
-
-      &:hover,
-      &:focus {
-        color: #00a9ff;
-      }
-    }
-
-    // Активна сторінка - колір #00a9ff
-    &.current-menu-item,
-    &.current_page_ancestor,
-    &.current_page_parent,
-    &.current-menu-ancestor {
-      a {
-        color: #00a9ff !important;
-      }
+    @include breakpoint(small down) {
+      max-height: 40px;
     }
   }
 }
 
-@include breakpoint(small down) {
-  // Mobile menu styling with higher specificity
-  .header .menu-grid-container {
-    padding-left: 15px;
-    padding-right: 15px;
-
-    .grid-margin-x {
-      margin-left: 0;
-      margin-right: 0;
-
-      .cell {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-      }
-    }
-  }
-
-  .header .title-bar {
+// Desktop menu styling
+@include breakpoint(large) {
+  .header .header-menu.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     background: transparent;
-    padding: 10px 0;
-    border: none;
-
-    .menu-icon {
-      @include menu-icon(#00263c, #00a9ff, 30px, 24px, 3px);
-      padding: 0;
-      border: none;
-      background-color: transparent;
-    }
-
-    .title-bar-title {
-      color: #00263c;
-      font-weight: 500;
-    }
-  }
-
-  .header .top-bar {
-    display: none;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    border-radius: 8px;
-  }
-
-  .header .header-menu {
-    background: transparent;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
     li {
       background: transparent;
+      margin: 0;
 
       a {
-        background: transparent;
         color: #00263c;
-        line-height: 45px;
-        font-size: 15px;
-        border-bottom: 1px solid rgba(240, 240, 240, 0.3);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.4;
+        padding: 12px 20px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        border-radius: 4px;
+        display: block;
 
         &:hover,
         &:focus {
@@ -143,6 +78,7 @@
         }
       }
 
+      // Active page color
       &.current-menu-item,
       &.current_page_ancestor,
       &.current_page_parent,
@@ -152,43 +88,9 @@
         }
       }
 
-      &[aria-expanded='true'] {
-        a {
-          color: #00a9ff;
-        }
-      }
-    }
-
-    .submenu-toggle {
-      padding: 0;
-      background: transparent;
-
-      &::after {
-        color: #00263c;
-      }
-    }
-
-    .submenu {
-      a {
-        padding-left: #{get-side($accordionmenu-padding, 'left') * 1.65};
-        background: rgba(248, 249, 250, 0.8);
-      }
-
-      .submenu {
-        a {
-          padding-left: #{get-side($accordionmenu-padding, 'left') * 2.3};
-          background: rgba(240, 240, 240, 0.8);
-        }
-      }
-    }
-  }
-}
-
-@include breakpoint(medium) {
-  // Desktop menu styling with higher specificity
-  .header .header-menu.menu {
-    li {
       &.has-dropdown {
+        position: relative;
+
         a {
           position: relative;
 
@@ -198,13 +100,19 @@
             font-weight: 900;
             margin-left: 8px;
             font-size: 12px;
+            transition: transform 0.3s ease;
           }
         }
-      }
 
-      &.is-active a {
-        background: rgba(0, 169, 255, 0.1);
-        color: #00a9ff;
+        &:hover {
+          a::after {
+            transform: rotate(180deg);
+          }
+
+          .submenu {
+            display: block;
+          }
+        }
       }
     }
 
@@ -212,15 +120,17 @@
     .submenu {
       z-index: 11;
       display: none;
-      background: rgba(255, 255, 255, 0.95);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       border-radius: 8px;
-      min-width: 200px;
-
-      &.js-dropdown-active {
-        display: block;
-      }
+      min-width: 220px;
+      padding: 10px 0;
+      margin-top: 5px;
+      list-style: none;
 
       li {
         background: transparent;
@@ -228,19 +138,15 @@
         a {
           background: transparent;
           color: #00263c;
-          line-height: 35px;
+          line-height: 1.4;
           font-size: 14px;
-          padding: 8px 20px;
-          border-bottom: 1px solid rgba(240, 240, 240, 0.3);
+          padding: 12px 20px;
+          border-bottom: none;
+          transition: all 0.3s ease;
 
           &:hover {
-            background: rgba(0, 169, 255, 0.1);
             color: #00a9ff;
           }
-        }
-
-        &:last-child a {
-          border-bottom: none;
         }
 
         &.current-menu-item,
@@ -248,11 +154,205 @@
         &.current_page_parent,
         &.current-menu-ancestor {
           a {
-            background: rgba(0, 169, 255, 0.1);
             color: #00a9ff !important;
           }
         }
       }
+    }
+  }
+}
+
+// Mobile styles - clean hamburger menu
+@include breakpoint(medium down) {
+  .header {
+    // Hide desktop menu completely on mobile
+    .show-for-large {
+      display: none !important;
+    }
+
+    // Mobile hamburger button
+    .mobile-menu-toggle {
+      background: transparent;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      z-index: 1001;
+      position: relative;
+
+      .hamburger {
+        width: 24px;
+        height: 18px;
+        position: relative;
+        display: block;
+
+        span {
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          background: #00263c;
+          border-radius: 1px;
+          opacity: 1;
+          left: 0;
+          transform: rotate(0deg);
+          transition: 0.25s ease-in-out;
+
+          &:nth-child(1) {
+            top: 0px;
+          }
+
+          &:nth-child(2) {
+            top: 8px;
+          }
+
+          &:nth-child(3) {
+            top: 16px;
+          }
+        }
+
+        &.is-active {
+          span {
+            &:nth-child(1) {
+              top: 8px;
+              transform: rotate(135deg);
+            }
+
+            &:nth-child(2) {
+              opacity: 0;
+              transform: scale(0);
+            }
+
+            &:nth-child(3) {
+              top: 8px;
+              transform: rotate(-135deg);
+            }
+          }
+        }
+      }
+    }
+
+    // Mobile menu overlay
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+
+      &.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    // Mobile menu - slide from right, 50% width
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      max-width: 300px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      padding: 80px 20px 20px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+
+      &.is-open {
+        transform: translateX(0);
+      }
+    }
+
+    // Mobile menu close button - remove it since we'll use overlay and hamburger
+    .mobile-menu-close {
+      display: none;
+    }
+
+    // Mobile menu items
+    .header-menu {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        background: transparent;
+        border-bottom: 1px solid rgba(0, 38, 60, 0.1);
+        margin: 0;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        a {
+          background: transparent;
+          color: #00263c;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 18px 0;
+          display: block;
+          border-bottom: none;
+          transition: all 0.3s ease;
+          text-decoration: none;
+
+          &:hover,
+          &:focus {
+            color: #00a9ff;
+          }
+        }
+
+        &.current-menu-item,
+        &.current_page_ancestor,
+        &.current_page_parent,
+        &.current-menu-ancestor {
+          a {
+            color: #00a9ff !important;
+          }
+        }
+      }
+
+      // Mobile submenu
+      .submenu {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        border-left: 2px solid #00a9ff;
+        margin-left: 20px;
+        list-style: none;
+
+        a {
+          padding: 15px 0 15px 20px;
+          font-size: 14px;
+          color: #666;
+
+          &:hover {
+            color: #00a9ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet styles
+@include breakpoint(large only) {
+  .header {
+    .logo img {
+      max-height: 45px;
+    }
+
+    .header-menu.menu li a {
+      font-size: 15px;
+      padding: 10px 16px;
     }
   }
 }
@@ -265,6 +365,10 @@
 // Remove special styling for home page - header is always white now
 body .main-content {
   padding-top: 50px;
+
+  @include breakpoint(small down) {
+    padding-top: 30px;
+  }
 }
 
 // Home page specific - no top padding since header is separate

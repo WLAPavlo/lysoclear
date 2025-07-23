@@ -91,9 +91,6 @@
     position: relative;
     overflow: hidden;
 
-    @include breakpoint(small down) {
-    }
-
     // Light background blocks
     &--light {
       color: #333333;
@@ -153,21 +150,44 @@
   }
 
   .flexible-block__image-wrap {
-    @include breakpoint(medium) {
+    @include breakpoint(xlarge) {
       margin: 0;
       padding: 0;
     }
 
+    @include breakpoint(large only) {
+      margin: 0;
+      padding: 0;
+    }
+
+    @include breakpoint(medium only) {
+      margin-bottom: 25px;
+    }
+
     @include breakpoint(small down) {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
   }
 
   .flexible-block__image {
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    min-height: 450px;
     overflow: hidden;
+
+    @include breakpoint(xlarge) {
+      min-height: 500px;
+    }
+
+    @include breakpoint(large only) {
+      min-height: 420px;
+    }
+
+    @include breakpoint(medium only) {
+      min-height: 350px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
 
     @include breakpoint(small down) {
       min-height: 250px;
@@ -191,22 +211,27 @@
   .flexible-block__content-wrap {
     display: flex;
     align-items: center;
-    min-height: 400px;
-    padding: 60px 40px;
+    min-height: 450px;
+    padding: 70px 50px;
 
-    @include breakpoint(medium) {
-      padding: 60px 60px;
+    @include breakpoint(xlarge) {
+      min-height: 500px;
+      padding: 80px 60px;
     }
 
-    .flexible-block--image_right & {
-      @include breakpoint(medium) {
-        padding: 60px 60px;
-      }
+    @include breakpoint(large only) {
+      min-height: 420px;
+      padding: 60px 45px;
+    }
+
+    @include breakpoint(medium only) {
+      min-height: auto;
+      padding: 40px 25px;
     }
 
     @include breakpoint(small down) {
       min-height: auto;
-      padding: 0;
+      padding: 30px 20px;
     }
   }
 
@@ -215,43 +240,113 @@
   }
 
   .flexible-block__title {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 600;
     line-height: 1.3;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
+    @include breakpoint(xlarge) {
+      font-size: 42px;
+      margin-bottom: 35px;
+    }
+
+    @include breakpoint(large only) {
+      font-size: 34px;
+      margin-bottom: 28px;
+    }
+
+    @include breakpoint(medium only) {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
     @include breakpoint(small down) {
-      font-size: 26px;
+      font-size: 28px;
       margin-bottom: 20px;
     }
   }
 
   .flexible-block__text {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 
-    @include breakpoint(small down) {
+    @include breakpoint(xlarge) {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    @include breakpoint(large only) {
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    @include breakpoint(medium only) {
       font-size: 15px;
+      margin-bottom: 28px;
+    }
+    @include breakpoint(small down) {
+      font-size: 14px;
       margin-bottom: 25px;
     }
 
     p {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
 
+      @include breakpoint(xlarge) {
+        margin-bottom: 20px;
+      }
+
+      @include breakpoint(small down) {
+        margin-bottom: 15px;
+      }
       &:last-child {
         margin-bottom: 0;
       }
     }
+
+    // Ensure proper text formatting for flexible content
+    ul,
+    ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+
+      li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 600;
+    }
+
+    em,
+    i {
+      font-style: italic;
+    }
   }
 
   .flexible-block__button {
-    margin-top: 10px;
+    margin-top: 25px;
+
+    @include breakpoint(xlarge) {
+      margin-top: 30px;
+    }
+
+    @include breakpoint(medium only) {
+      margin-top: 20px;
+    }
+
+    @include breakpoint(small down) {
+      margin-top: 15px;
+    }
   }
 
   .flexible-block__btn {
-    padding: 15px 30px;
-    font-size: 16px;
+    padding: 16px 35px;
+    font-size: 17px;
     font-weight: 500;
     border-radius: 6px;
     transition: all 0.3s ease;
@@ -260,9 +355,24 @@
     text-transform: none;
     letter-spacing: normal;
 
+    @include breakpoint(xlarge) {
+      padding: 18px 40px;
+      font-size: 18px;
+    }
+
+    @include breakpoint(large only) {
+      padding: 15px 32px;
+      font-size: 16px;
+    }
+
+    @include breakpoint(medium only) {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+
     @include breakpoint(small down) {
       padding: 12px 25px;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     &:hover {

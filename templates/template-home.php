@@ -9,7 +9,6 @@ get_header(); ?>
     echo do_shortcode('[slider]');
 } ?>
 <!--END of HOME PAGE SLIDER-->
-
 <!-- FEATURES SECTION -->
 <?php get_template_part('parts/features-section'); ?>
 <!-- END FEATURES SECTION -->
@@ -21,6 +20,10 @@ get_header(); ?>
 <!-- TESTIMONIALS SECTION -->
 <?php get_template_part('parts/testimonials-section'); ?>
 <!-- END TESTIMONIALS SECTION -->
+
+<!-- LATEST NEWS SECTION -->
+<?php get_template_part('parts/latest-news-section'); ?>
+<!-- END LATEST NEWS SECTION -->
 
 <!-- BEGIN of main content -->
 <div class="grid-container">

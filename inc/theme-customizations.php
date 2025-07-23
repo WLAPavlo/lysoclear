@@ -86,6 +86,12 @@ add_action('widgets_init', function () {
     ]);
 });
 
+// Add custom setting for news posts per page
+add_action('admin_init', function () {
+    // Використовуємо стандартне поле posts_per_page для всіх постів
+    // Логіка відображення буде в темплейтах
+});
+
 // Remove #more anchor from posts
 add_filter('the_content_more_link', function ($link) {
     $offset = strpos($link, '#more-');
@@ -210,6 +216,47 @@ add_action('login_enqueue_scripts', function () {
     echo ob_get_clean();
 });
 
+// AJAX handler for loading news posts
+add_action('wp_ajax_load_news_posts', 'handle_load_news_posts');
+add_action('wp_ajax_nopriv_load_news_posts', 'handle_load_news_posts');
+
+function handle_load_news_posts() {
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'project_nonce')) {
+        wp_die('Security check failed');
+    }
+
+    $page = intval($_POST['page']);
+    $posts_per_page = 9; // Always 9 posts per page for news
+
+    $news_query = new WP_Query([
+        'post_type' => 'post',
+        'posts_per_page' => $posts_per_page,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'paged' => $page
+    ]);
+
+    ob_start();
+
+    if ($news_query->have_posts()) {
+        while ($news_query->have_posts()) {
+            $news_query->the_post();
+            ?>
+            <div class="cell medium-4 small-12">
+                <?php get_template_part('parts/loop', 'post'); ?>
+            </div>
+            <?php
+        }
+    }
+
+    wp_reset_postdata();
+    $content = ob_get_clean();
+
+    wp_send_json_success($content);
+}
+
 add_filter('login_headerurl', function () {
     return get_bloginfo('url');
 });
@@ -324,11 +371,11 @@ add_filter(
             if (is_array($size)) {
                 $image[1] = $size[0];
                 $image[2] = $size[1];
-            //            } elseif (($xml = simplexml_load_file($image[0])) !== false) {
-            //                $attr = $xml->attributes();
-            //                $viewbox = explode(' ', $attr->viewBox);
-            //                $image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[2] : null);
-            //                $image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[3] : null);
+                //            } elseif (($xml = simplexml_load_file($image[0])) !== false) {
+                //                $attr = $xml->attributes();
+                //                $viewbox = explode(' ', $attr->viewBox);
+                //                $image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[2] : null);
+                //                $image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : (4 == count($viewbox) ? (int) $viewbox[3] : null);
             } else {
                 $image[1] = $image[2] = null;
             }

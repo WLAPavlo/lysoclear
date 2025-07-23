@@ -58,16 +58,28 @@
 
 .home-slide {
   width: 100%;
-  height: 800px;
+  height: 500px;
   transition: height 0.3s ease;
   position: relative;
 
+  @include breakpoint(xlarge) {
+    height: 550px;
+  }
+
+  @include breakpoint(large only) {
+    height: 480px;
+  }
+
+  @include breakpoint(medium only) {
+    height: 420px;
+  }
+
   @include breakpoint(medium down) {
-    height: 500px;
+    height: 380px;
   }
 
   @include breakpoint(small down) {
-    height: 400px;
+    height: 350px;
   }
 
   &__inner {
@@ -76,39 +88,71 @@
     height: 100%;
     display: flex;
     align-items: center;
+    background-position: center right;
+    background-size: cover;
   }
 
   &__caption {
     position: relative;
     z-index: 2;
-    width: 50%; // 50% width as requested
+    width: 55%;
     max-width: none;
-    background-color: rgba(0, 162, 255, 0.9); // Semi-transparent background
+    background-color: rgba(0, 162, 255, 0.9);
     color: #ffffff;
-    margin-left: 0; // Stick to left side
-    padding: 60px 0 60px 120px; // Left padding to align text with logo
+    margin-left: 0;
+    padding: 40px 60px 40px 100px;
 
-    @include breakpoint(small down) {
-      width: 100%;
-      padding: 40px 15px; // Standard mobile padding
+    @include breakpoint(xlarge) {
+      width: 52%;
+      padding: 45px 70px 45px 120px;
+    }
+
+    @include breakpoint(large only) {
+      width: 58%;
+      padding: 35px 50px 35px 80px;
+    }
+
+    @include breakpoint(medium only) {
+      width: 70%;
+      padding: 30px 40px 30px 60px;
     }
 
     @include breakpoint(medium down) {
-      width: 60%; // Slightly wider on medium screens
-      padding: 50px 0 50px 60px; // Align with medium screen logo position
+      width: 75%;
+      padding: 25px 30px 25px 50px;
+    }
+    @include breakpoint(small down) {
+      width: 100%;
+      padding: 25px 30px;
     }
 
     h1,
     h2,
     h3 {
       color: #ffffff;
-      font-size: 26px;
-      margin-bottom: 25px;
+      font-size: 28px;
+      margin-bottom: 20px;
       line-height: 1.3;
       font-weight: 600;
 
-      @include breakpoint(small down) {
+      @include breakpoint(xlarge) {
+        font-size: 32px;
+        margin-bottom: 25px;
+      }
+
+      @include breakpoint(large only) {
+        font-size: 26px;
+        margin-bottom: 18px;
+      }
+
+      @include breakpoint(medium only) {
         font-size: 22px;
+        margin-bottom: 15px;
+      }
+
+      @include breakpoint(small down) {
+        font-size: 20px;
+        margin-bottom: 12px;
       }
     }
 
@@ -119,8 +163,24 @@
       line-height: 1.6;
       margin-bottom: 20px;
 
-      @include breakpoint(small down) {
+      @include breakpoint(xlarge) {
+        font-size: 16px;
+        margin-bottom: 25px;
+        line-height: 1.7;
+      }
+
+      @include breakpoint(large only) {
         font-size: 14px;
+        margin-bottom: 18px;
+      }
+
+      @include breakpoint(medium only) {
+        font-size: 13px;
+        margin-bottom: 15px;
+      }
+      @include breakpoint(small down) {
+        font-size: 12px;
+        margin-bottom: 12px;
       }
     }
 
@@ -133,10 +193,37 @@
       transition: all 0.3s ease;
       margin-top: 15px;
       border-radius: 4px;
+      font-weight: 500;
+
+      @include breakpoint(xlarge) {
+        padding: 14px 30px;
+        font-size: 15px;
+        margin-top: 20px;
+      }
+
+      @include breakpoint(large only) {
+        padding: 12px 25px;
+        font-size: 13px;
+        margin-top: 15px;
+      }
+
+      @include breakpoint(medium only) {
+        padding: 10px 20px;
+        font-size: 12px;
+        margin-top: 12px;
+      }
+
+      @include breakpoint(small down) {
+        padding: 10px 18px;
+        font-size: 11px;
+        margin-top: 10px;
+      }
 
       &:hover {
         background-color: #ffffff;
         color: #00a2ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
       }
     }
   }
