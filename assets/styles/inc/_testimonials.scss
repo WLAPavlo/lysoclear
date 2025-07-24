@@ -5,59 +5,62 @@
 .testimonials-section {
   background-color: #ffffff;
   position: relative;
-  padding: 100px 0;
 
   @include breakpoint(xlarge) {
-    padding: 45px 0;
+    padding: 40px 0;
   }
 
   @include breakpoint(large only) {
-    padding: 32px 0;
+    padding: 26px 0;
   }
 
   @include breakpoint(medium only) {
-    padding: 22px 0;
+    padding: 18px 0;
   }
 
   @include breakpoint(small down) {
-    padding: 16px 0;
+    padding: 12px 0;
   }
 }
 
 .testimonials-slider {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
 
   @include breakpoint(small down) {
+    padding-bottom: 40px;
   }
 
   .slick-dots {
     position: static;
     margin-top: 30px;
     text-align: center;
-    padding: 0;
+    padding: 15px 0;
     margin-left: 0;
     margin-right: 0;
     list-style: none;
     display: flex !important;
     justify-content: center;
     gap: 12px;
+    overflow: visible;
 
     @include breakpoint(small down) {
       margin-top: 25px;
+      padding: 10px 0;
     }
 
     li {
-      width: 12px;
-      height: 12px;
+      width: auto;
+      height: auto;
       margin: 0;
+      padding: 5px;
 
       button {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         border: none;
         background-color: rgba(0, 162, 255, 0.3);
@@ -65,6 +68,8 @@
         font-size: 0;
         cursor: pointer;
         transition: all 0.3s ease;
+        display: block;
+        outline: none;
 
         &:before {
           display: none;
@@ -191,40 +196,25 @@
   }
 }
 
-// Ensure current slide is always visible
 .slick-current .testimonial-item {
   opacity: 1;
   transform: translateY(0);
 }
 
-// Fix dots positioning and visibility
-.testimonials-slider .slick-dots {
-  li {
-    button {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: none;
-      background-color: rgba(0, 162, 255, 0.3);
-      padding: 0;
-      font-size: 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 2px; // Add margin to prevent clipping
+.slick-slider {
+  .slick-dots {
+    bottom: -45px;
 
-      &:before {
-        display: none;
+    li {
+      button {
+        border: 2px solid transparent;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: 2px solid rgba(0, 162, 255, 0.5);
+          outline-offset: 2px;
+        }
       }
-
-      &:hover {
-        background-color: rgba(0, 162, 255, 0.6);
-        transform: scale(1.2);
-      }
-    }
-
-    &.slick-active button {
-      background-color: #00a2ff;
-      transform: scale(1.2);
     }
   }
 }

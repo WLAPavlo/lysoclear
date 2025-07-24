@@ -88,8 +88,6 @@ add_action('widgets_init', function () {
 
 // Add custom setting for news posts per page
 add_action('admin_init', function () {
-    // Використовуємо стандартне поле posts_per_page для всіх постів
-    // Логіка відображення буде в темплейтах
 });
 
 // Remove #more anchor from posts
