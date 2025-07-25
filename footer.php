@@ -11,8 +11,17 @@
             <div class="grid-container menu-grid-container">
                 <div class="grid-x grid-margin-x">
                     <div class="cell medium-8 text-center medium-text-left">
-                        <?php if ($cta_text = get_field('footer_cta_text', 'options')) { ?>
-                            <h3><?php echo esc_html($cta_text); ?></h3>
+                        <?php
+                        $phone = get_field('phone', 'options');
+                        if ($cta_text = get_field('footer_cta_text', 'options')) { ?>
+                            <h3>
+                                <?php echo esc_html($cta_text); ?>
+                                <?php if ($phone) { ?>
+                                    <a href="tel:<?php echo esc_attr(sanitize_number($phone)); ?>">
+                                        <?php echo esc_html($phone); ?>
+                                    </a>
+                                <?php } ?>
+                            </h3>
                         <?php } ?>
                     </div>
                     <div class="cell medium-4 text-center">
@@ -41,7 +50,6 @@
                         $copyright = get_field('copyright', 'options');
                         $address = get_field('address', 'options');
                         $email = get_field('email', 'options');
-                        $phone = get_field('phone', 'options');
                         $year = date('Y');
                         ?>
 
@@ -52,15 +60,27 @@
                         <?php } ?>
 
                         <?php if ($address) { ?>
-                            <span><?php echo esc_html($address); ?></span>
+                            <span>
+                                <a href="https://maps.google.com/?q=<?php echo urlencode($address); ?>" target="_blank" rel="noopener">
+                                    <?php echo esc_html($address); ?>
+                                </a>
+                            </span>
                         <?php } ?>
 
                         <?php if ($email) { ?>
-                            <span><?php echo esc_html(strtoupper($email)); ?></span>
+                            <span>
+                                <a href="mailto:<?php echo esc_attr($email); ?>">
+                                    <?php echo esc_html(strtoupper($email)); ?>
+                                </a>
+                            </span>
                         <?php } ?>
 
                         <?php if ($phone) { ?>
-                            <span><?php echo esc_html($phone); ?></span>
+                            <span>
+                                <a href="tel:<?php echo esc_attr(sanitize_number($phone)); ?>">
+                                    <?php echo esc_html($phone); ?>
+                                </a>
+                            </span>
                         <?php } ?>
                     </div>
                 </div>

@@ -30,8 +30,9 @@ function show_custom_logo($size = 'medium'): void
  * Create pagination within context.
  *
  * @param string $query
+ * @param string $type Type of pagination: 'default' or 'dots'
  */
-function foundation_pagination($query = ''): void
+function foundation_pagination($query = '', $type = 'default'): void
 {
     if (empty($query)) {
         global $wp_query;
@@ -40,20 +41,45 @@ function foundation_pagination($query = ''): void
 
     $big = 999999999;
 
-    $links = paginate_links([
-        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-        'format' => '?paged=%#%',
-        'prev_next' => true,
-        'prev_text' => '&laquo;',
-        'next_text' => '&raquo;',
-        'current' => max(1, get_query_var('paged')),
-        'total' => $query->max_num_pages,
-        'type' => 'list',
-    ]);
+    if ('dots' === $type) {
+        // Dots pagination like on home page
+        $current = max(1, get_query_var('paged'));
+        $total = $query->max_num_pages;
 
-    $pagination = str_replace('page-numbers', 'pagination', $links);
+        if ($total > 1) {
+            echo '<div class="pagination-wrapper">';
+            echo '<div class="pagination-dots">';
 
-    echo $pagination;
+            for ($i = 1; $i <= $total; $i++) {
+                $class = ($i == $current) ? 'pagination-dot active' : 'pagination-dot';
+                $url = get_pagenum_link($i);
+                echo '<a href="' . esc_url($url) . '" class="' . $class . '"></a>';
+            }
+
+            echo '</div>';
+            echo '</div>';
+        }
+    } else {
+        // Default pagination
+        $links = paginate_links([
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'prev_next' => true,
+            'prev_text' => '&laquo; Previous',
+            'next_text' => 'Next &raquo;',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $query->max_num_pages,
+            'type' => 'list',
+            'mid_size' => 2,
+            'end_size' => 1,
+        ]);
+
+        if ($links) {
+            echo '<div class="pagination-wrapper">';
+            echo str_replace('page-numbers', 'pagination', $links);
+            echo '</div>';
+        }
+    }
 }
 
 /**

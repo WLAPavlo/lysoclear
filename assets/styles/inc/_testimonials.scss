@@ -106,13 +106,13 @@
   padding: 20px 0;
 
   // Animation states
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease-out;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
   &.animate-in {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   @include breakpoint(small down) {
@@ -194,11 +194,6 @@
   @include breakpoint(xlarge) {
     font-size: 26px;
   }
-}
-
-.slick-current .testimonial-item {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .slick-slider {

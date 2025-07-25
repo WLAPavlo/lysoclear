@@ -27,15 +27,49 @@
 .not-found {
   padding-top: 100px;
   padding-bottom: 100px;
+  text-align: center;
 
-  .label {
+  h1 {
+    font-size: 48px;
+    color: #00a2ff;
+    margin-bottom: 20px;
+
+    @include breakpoint(small down) {
+      font-size: 36px;
+    }
+  }
+
+  h3 {
+    font-size: 24px;
+    color: #00263c;
+    margin-bottom: 30px;
+
+    @include breakpoint(small down) {
+      font-size: 20px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  .button {
     background-color: $primary-color;
+    color: $white;
     text-decoration: none;
     cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.3s ease;
 
     &:hover {
       background-color: darken($primary-color, 8);
       color: $white;
+      transform: translateY(-1px);
     }
   }
 }

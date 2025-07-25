@@ -64,6 +64,33 @@ function resizeVideo() {
  * Scripts which runs after DOM load
  */
 $(document).on('ready', function () {
+  // Responsive utilities
+  function handleResponsiveElements() {
+    // Handle responsive tables
+    $('table').each(function () {
+      if (!$(this).parent().hasClass('table-responsive')) {
+        $(this).wrap('<div class="table-responsive"></div>');
+      }
+    });
+
+    // Handle responsive images
+    $('img').each(function () {
+      if (!$(this).hasClass('responsive-img')) {
+        $(this).addClass('responsive-img');
+      }
+    });
+
+    // Handle responsive videos
+    $('video').each(function () {
+      if (!$(this).hasClass('responsive-video')) {
+        $(this).addClass('responsive-video');
+      }
+    });
+  }
+
+  // Initialize responsive elements
+  handleResponsiveElements();
+
   // Header is now always white - no scroll effects needed
 
   /**
@@ -246,6 +273,11 @@ $(document).on('ready', function () {
     $('.mobile-menu').removeClass('is-open');
     $('.mobile-menu-overlay').removeClass('is-open');
     $('body').removeClass('mobile-menu-open');
+
+    // Re-initialize responsive elements after orientation change
+    setTimeout(function () {
+      handleResponsiveElements();
+    }, 100);
   });
 
   resizeVideo();
@@ -266,15 +298,62 @@ $(window).on('load', function () {
 /**
  * Scripts which runs at window resize
  */
-$(window).on('resize', function () {
-  // jQuery code goes here
+// Responsive utilities
+window.handleResponsiveElements = function () {
+  // Handle responsive tables
+  $('table').each(function () {
+    if (!$(this).parent().hasClass('table-responsive')) {
+      $(this).wrap('<div class="table-responsive"></div>');
+    }
+  });
 
-  resizeVideo();
-});
+  // Handle responsive images
+  $('img').each(function () {
+    if (!$(this).hasClass('responsive-img')) {
+      $(this).addClass('responsive-img');
+    }
+  });
+
+  // Handle responsive videos
+  $('video').each(function () {
+    if (!$(this).hasClass('responsive-video')) {
+      $(this).addClass('responsive-video');
+    }
+  });
+};
 
 /**
  * Scripts which runs on scrolling
  */
 $(window).on('scroll', function () {
   // jQuery code goes here
+});
+
+// Touch device detection and optimization
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  $('body').addClass('touch-device');
+
+  // Optimize hover effects for touch devices
+  $('.button, a')
+    .on('touchstart', function () {
+      $(this).addClass('touch-active');
+    })
+    .on('touchend', function () {
+      var $this = $(this);
+      setTimeout(function () {
+        $this.removeClass('touch-active');
+      }, 150);
+    });
+}
+
+// Viewport height fix for mobile browsers
+function setVH() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setVH();
+window.addEventListener('resize', setVH);
+window.addEventListener('orientationchange', function () {
+  setTimeout(setVH, 100);
 });
