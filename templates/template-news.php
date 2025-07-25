@@ -64,7 +64,7 @@ $banner_image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID
                                 <?php while ($news_query->have_posts()) {
                                     $news_query->the_post();
                                     ?>
-                                    <div class="cell medium-4 small-12">
+                                    <div class="cell large-4 medium-6 small-12">
                                         <?php get_template_part('parts/loop', 'post'); ?>
                                     </div>
                                 <?php } ?>

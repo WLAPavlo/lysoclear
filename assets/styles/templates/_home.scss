@@ -98,32 +98,30 @@
   }
 
   @include breakpoint(large only) {
-    padding: 0 25px;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
 
-  @include breakpoint(medium only) {
+  @include breakpoint(medium down) {
     padding: 0 20px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
 
   @include breakpoint(small down) {
-    padding: 30px 20px;
+    padding: 20px 15px;
     flex-direction: column;
     text-align: center;
-    min-width: 320px; // Increased width for better readability
-    margin: 0 8px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
+    align-items: center;
+    margin-bottom: 30px;
   }
 
   // Vertical divider between items (desktop only)
   &:not(:last-child) {
-    @include breakpoint(large) {
+    @include breakpoint(xlarge) {
       &::after {
         content: '';
         position: absolute;
@@ -160,13 +158,14 @@
       width: 75px;
       height: 75px;
       margin: 0 20px 20px 0;
+      align-self: center;
     }
 
-    @include breakpoint(medium only) {
+    @include breakpoint(medium down) {
       width: 65px;
       height: 65px;
-      margin: 0 18px 15px 0;
-      margin-top: 0;
+      margin: 0 auto 20px auto;
+      align-self: center;
     }
 
     @include breakpoint(small down) {
@@ -174,7 +173,6 @@
       height: 70px;
       margin: 0 auto 20px auto;
       align-self: center;
-      margin-top: 0;
     }
 
     img {
@@ -193,7 +191,7 @@
         max-height: 75px;
       }
 
-      @include breakpoint(medium only) {
+      @include breakpoint(medium down) {
         max-width: 65px;
         max-height: 65px;
       }
@@ -207,22 +205,25 @@
 
   &__content {
     flex: 1;
-    padding-right: 30px;
 
     @include breakpoint(xlarge) {
-      padding-right: 40px;
+      text-align: center;
+      padding-right: 0;
     }
 
     @include breakpoint(large only) {
-      padding-right: 25px;
+      text-align: center;
+      padding-right: 0;
     }
 
-    @include breakpoint(medium only) {
-      padding-right: 15px;
+    @include breakpoint(medium down) {
+      padding-right: 0;
+      text-align: center;
     }
 
     @include breakpoint(small down) {
       padding-right: 0;
+      text-align: center;
     }
 
     h5 {
@@ -242,14 +243,16 @@
         margin-bottom: 14px;
       }
 
-      @include breakpoint(medium only) {
+      @include breakpoint(medium down) {
         font-size: 18px;
         margin-bottom: 12px;
+        text-align: center;
       }
 
       @include breakpoint(small down) {
         font-size: 20px;
         margin-bottom: 15px;
+        text-align: center;
       }
     }
 
@@ -268,14 +271,16 @@
         font-size: 15px;
       }
 
-      @include breakpoint(medium only) {
+      @include breakpoint(medium down) {
         font-size: 15px;
         line-height: 1.5;
+        text-align: center;
       }
 
       @include breakpoint(small down) {
         font-size: 16px;
         line-height: 1.6;
+        text-align: center;
       }
     }
   }

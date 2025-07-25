@@ -79,7 +79,8 @@
   }
 
   @include breakpoint(small down) {
-    height: 400px;
+    height: auto;
+    min-height: 400px;
   }
 
   &__inner {
@@ -92,6 +93,12 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    @include breakpoint(small down) {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 400px;
+    }
   }
 
   &__caption {
@@ -143,10 +150,14 @@
     }
 
     @include breakpoint(small down) {
-      width: 90%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 18px 20px 18px 25px;
+      position: relative;
+      width: 100%;
+      left: auto;
+      top: auto;
+      transform: none;
+      padding: 25px 20px;
+      margin-top: auto;
+      order: 2;
     }
 
     h1,
@@ -196,8 +207,9 @@
       }
 
       @include breakpoint(small down) {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 22px;
+        margin-bottom: 15px;
+        text-align: center;
       }
     }
 
@@ -247,8 +259,9 @@
       }
 
       @include breakpoint(small down) {
-        font-size: 10px;
-        margin-bottom: 8px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        text-align: center;
       }
     }
 
@@ -309,9 +322,14 @@
       }
 
       @include breakpoint(small down) {
-        padding: 7px 14px;
-        font-size: 9px;
-        margin-top: 8px;
+        padding: 12px 24px;
+        font-size: 16px;
+        margin-top: 20px;
+        display: block;
+        text-align: center;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       &:hover {
