@@ -105,6 +105,10 @@ main {
   }
 }
 
+.home-item p {
+  margin-bottom: 2rem !important;
+}
+
 /* Preloader */
 
 @keyframes spin {
@@ -276,6 +280,19 @@ img {
 /* Search Results Grid */
 .search-results-grid {
   margin-top: 40px;
+
+  .home-item {
+    margin-bottom: 40px;
+    height: 100%;
+
+    @include breakpoint(medium down) {
+      margin-bottom: 50px;
+    }
+
+    @include breakpoint(small down) {
+      margin-bottom: 40px;
+    }
+  }
 
   .news-item {
     margin-bottom: 40px;

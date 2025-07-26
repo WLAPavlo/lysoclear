@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="lserver" preserveTimestamps="false" traceLevel="ERRORS" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;node_modules" confirmBeforeUploading="false" confirmBeforeDeletion="false" showAutoUploadSettingsWarning="false">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="iserver" preserveTimestamps="false" traceLevel="ERRORS" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;node_modules" confirmBeforeUploading="false" confirmBeforeDeletion="false" showAutoUploadSettingsWarning="false">
     <option name="confirmBeforeDeletion" value="false" />
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="lserver">
+      <paths name="iserver">
         <serverdata>
           <mappings>
             <mapping deploy="/internship/luhovyi/lysoclearwla/wp-content/themes/lysoclearwla" local="$PROJECT_DIR$" web="/" />

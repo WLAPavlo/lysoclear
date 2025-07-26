@@ -87,8 +87,7 @@ add_action('widgets_init', function () {
 });
 
 // Add custom setting for news posts per page
-add_action('admin_init', function () {
-});
+add_action('admin_init', function () {});
 
 // Remove #more anchor from posts
 add_filter('the_content_more_link', function ($link) {

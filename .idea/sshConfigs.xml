@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="OPEN_SSH" host="ssh.pressable.com" id="2942e330-3680-4feb-9aee-dab271616305" port="22" nameFormat="DESCRIPTIVE" username="" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="ready-for-feedback3.com" id="2942e330-3680-4feb-9aee-dab271616305" port="25566" nameFormat="DESCRIPTIVE" username="avuh0" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

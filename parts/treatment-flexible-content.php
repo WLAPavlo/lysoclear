@@ -57,8 +57,12 @@
 
                 // Build section classes
                 $section_classes = ['treatment-flexible-block', 'treatment-flexible-block--' . $layout_type];
-                if ($content_width) $section_classes[] = 'treatment-flexible-block--width-' . $content_width;
-                if ($text_position) $section_classes[] = 'treatment-flexible-block--text-' . $text_position;
+                if ($content_width) {
+                $section_classes[] = 'treatment-flexible-block--width-' . $content_width;
+                }
+                if ($text_position) {
+                $section_classes[] = 'treatment-flexible-block--text-' . $text_position;
+                }
 
                 if ($is_dark_bg) {
                     $section_classes[] = 'treatment-flexible-block--dark';

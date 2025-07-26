@@ -50,7 +50,7 @@ function foundation_pagination($query = '', $type = 'default'): void
             echo '<div class="pagination-wrapper">';
             echo '<div class="pagination-dots">';
 
-            for ($i = 1; $i <= $total; $i++) {
+            for ($i = 1; $i <= $total; ++$i) {
                 $class = ($i == $current) ? 'pagination-dot active' : 'pagination-dot';
                 $url = get_pagenum_link($i);
                 echo '<a href="' . esc_url($url) . '" class="' . $class . '"></a>';

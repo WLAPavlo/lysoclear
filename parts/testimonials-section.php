@@ -1,11 +1,11 @@
 <?php
 // Get approved comments from WordPress
-$comments = get_comments(array(
+$comments = get_comments([
     'status' => 'approve',
     'number' => 10, // Limit to 10 testimonials
     'orderby' => 'comment_date',
-    'order' => 'DESC'
-));
+    'order' => 'DESC',
+]);
 
 if (!empty($comments)) { ?>
     <section class="testimonials-section">
@@ -13,7 +13,7 @@ if (!empty($comments)) { ?>
             <div class="grid-x grid-margin-x">
                 <div class="cell">
                     <div class="testimonials-slider" id="testimonials-slider">
-                        <?php foreach ($comments as $comment) : ?>
+                        <?php foreach ($comments as $comment) { ?>
                             <div class="testimonial-slide">
                                 <div class="testimonial-item">
                                     <div class="testimonial-quote">
@@ -34,7 +34,7 @@ if (!empty($comments)) { ?>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </div>
 
                     <script>

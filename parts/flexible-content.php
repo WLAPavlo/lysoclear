@@ -60,10 +60,18 @@
 
                 // Build section classes
                 $section_classes = ['flexible-block', 'flexible-block--' . $layout_type];
-                if ($padding_class) $section_classes[] = $padding_class;
-                if ($bg_color_class) $section_classes[] = $bg_color_class;
-                if ($content_width) $section_classes[] = 'flexible-block--width-' . $content_width;
-                if ($text_position) $section_classes[] = 'flexible-block--text-' . $text_position;
+                if ($padding_class) {
+                $section_classes[] = $padding_class;
+                }
+                if ($bg_color_class) {
+                $section_classes[] = $bg_color_class;
+                }
+                if ($content_width) {
+                $section_classes[] = 'flexible-block--width-' . $content_width;
+                }
+                if ($text_position) {
+                $section_classes[] = 'flexible-block--text-' . $text_position;
+                }
 
                 if ($is_dark_bg) {
                     $section_classes[] = 'flexible-block--dark';

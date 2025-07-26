@@ -1,23 +1,23 @@
 <!-- BEGIN of News Post -->
-<article class="news-item">
+<article class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>">
     <?php if (has_post_thumbnail()) { ?>
-        <div class="news-item__image">
+        <div class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__image">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail('medium_large', ['class' => 'news-item__img']); ?>
+                <?php the_post_thumbnail('medium_large', ['class' => (is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item') . '__img']); ?>
             </a>
         </div>
     <?php } ?>
 
-    <div class="news-item__content">
-        <h3 class="news-item__title">
+    <div class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__content">
+        <h3 class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__title">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                 <?php the_title(); ?>
             </a>
         </h3>
 
-        <div class="news-item__meta">
-            <span class="news-item__date"><?php echo get_the_date('F j, Y'); ?></span>
-            <span class="news-item__comments">
+        <div class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__meta">
+            <span class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__date"><?php echo get_the_date('F j, Y'); ?></span>
+            <span class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__comments">
                 <?php
                 $comments_count = get_comments_number();
                 if (0 == $comments_count) {
@@ -31,7 +31,7 @@
             </span>
         </div>
 
-        <div class="news-item__excerpt">
+        <div class="<?php echo is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item'; ?>__excerpt">
             <?php the_excerpt(); ?>
         </div>
 
@@ -42,11 +42,11 @@
 
         if (preg_match($button_pattern, $content, $matches)) {
             // If custom button found in content, display it
-            echo '<div class="news-item__button">' . $matches[0] . '</div>';
+            echo '<div class="' . (is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item') . '__button">' . $matches[0] . '</div>';
         } else {
             // Default button if no custom button found
-            echo '<div class="news-item__button">';
-            echo '<a href="' . get_permalink() . '" class="button news-item__btn">Learn more</a>';
+            echo '<div class="' . (is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item') . '__button">';
+            echo '<a href="' . get_permalink() . '" class="button ' . (is_home() || is_front_page() || (is_page_template('templates/template-home.php')) ? 'home-item' : 'news-item') . '__btn">Learn more</a>';
             echo '</div>';
         }
         ?>
