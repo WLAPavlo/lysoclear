@@ -116,12 +116,13 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.2;
-  text-align: center;
+  text-align: left;
+  max-width: rem-calc(560px);
+  margin-left: auto;
 
   @include breakpoint(xlarge) {
     font-size: 54px;
     text-align: 15rem;
-    text-align: center;
   }
 
   @include breakpoint(large only) {

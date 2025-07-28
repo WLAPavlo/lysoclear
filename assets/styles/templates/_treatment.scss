@@ -298,31 +298,59 @@
 
   // Content inner - default styling
   .treatment-flexible-block__content {
-    margin: 0 auto;
     width: 70%;
+    margin: 0 auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   // Content alignment modifiers
   .treatment-flexible-block--content-center .treatment-flexible-block__content {
     width: 70%;
     margin: 0 auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .treatment-flexible-block--content-left .treatment-flexible-block__content {
     width: 70%;
     margin: 0;
     margin-right: auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .treatment-flexible-block--content-right .treatment-flexible-block__content {
     width: 70%;
     margin: 0;
     margin-left: auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .treatment-flexible-block--content-full .treatment-flexible-block__content {
     width: 100%;
     margin: 0;
+
+    @include breakpoint(medium down) {
+      text-align: center;
+    }
   }
 
   .treatment-flexible-block__title {

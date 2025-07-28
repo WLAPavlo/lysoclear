@@ -7,9 +7,8 @@ $title = get_sub_field('content_title');
 $content = get_sub_field('content_text');
 $button = get_sub_field('content_button');
 
-// Перевірки в коді замість required полів
 if (!$image || !$title || !$content) {
-    return; // Не виводимо блок якщо немає основного контенту
+    return;
 }
 
 // Build section classes based on theme

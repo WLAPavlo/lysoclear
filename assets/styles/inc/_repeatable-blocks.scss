@@ -186,29 +186,57 @@
   .flexible-block__content {
     width: 70%;
     margin: 0 auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   // Content alignment modifiers
   .flexible-block--content-center .flexible-block__content {
     width: 70%;
     margin: 0 auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .flexible-block--content-left .flexible-block__content {
     width: 70%;
     margin: 0;
     margin-right: auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .flexible-block--content-right .flexible-block__content {
     width: 70%;
     margin: 0;
     margin-left: auto;
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
   }
 
   .flexible-block--content-full .flexible-block__content {
     width: 100%;
     margin: 0;
+
+    @include breakpoint(medium down) {
+      text-align: center;
+    }
   }
 
   .flexible-block__title {
