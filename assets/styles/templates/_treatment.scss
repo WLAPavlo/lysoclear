@@ -149,174 +149,10 @@
       }
     }
 
-    // Text position + Width control classes combined
-    // LEFT alignment - content starts from left edge
-    &--text-left {
+    // Theme modifiers - Light theme (White background + Black text)
+    &--theme-light {
       .treatment-flexible-block__content-wrap {
-        justify-content: flex-start;
-        text-align: left;
-      }
-
-      &.treatment-flexible-block--width-full
-        .treatment-flexible-block__content {
-        width: 100%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-large
-        .treatment-flexible-block__content {
-        width: 80%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-medium
-        .treatment-flexible-block__content {
-        width: 60%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-small
-        .treatment-flexible-block__content {
-        width: 40%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-
-    // CENTER alignment - content centers within wrapper
-    &--text-center {
-      .treatment-flexible-block__content-wrap {
-        justify-content: center;
-        text-align: center;
-      }
-
-      &.treatment-flexible-block--width-full
-        .treatment-flexible-block__content {
-        width: 100%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-large
-        .treatment-flexible-block__content {
-        width: 80%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-medium
-        .treatment-flexible-block__content {
-        width: 60%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-small
-        .treatment-flexible-block__content {
-        width: 40%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-
-    // RIGHT alignment - content starts from right edge
-    &--text-right {
-      .treatment-flexible-block__content-wrap {
-        justify-content: flex-end;
-        text-align: left;
-      }
-
-      &.treatment-flexible-block--width-full
-        .treatment-flexible-block__content {
-        width: 100%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-large
-        .treatment-flexible-block__content {
-        width: 80%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-medium
-        .treatment-flexible-block__content {
-        width: 60%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.treatment-flexible-block--width-small
-        .treatment-flexible-block__content {
-        width: 40%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-
-    // Light background blocks
-    &--light {
-      .treatment-flexible-block__content-wrap {
+        background-color: #ffffff;
         color: #333333;
       }
 
@@ -327,11 +163,23 @@
       .treatment-flexible-block__text {
         color: #00263c;
       }
+
+      .treatment-flexible-block__btn {
+        background-color: transparent;
+        color: #00a2ff;
+        border: 2px solid #00a2ff;
+
+        &:hover {
+          background-color: #00a2ff;
+          color: #ffffff;
+        }
+      }
     }
 
-    // Dark background blocks
-    &--dark {
+    // Theme modifiers - Blue theme (Blue background + White text)
+    &--theme-blue {
       .treatment-flexible-block__content-wrap {
+        background-color: #00a2ff;
         color: #ffffff;
       }
 
@@ -342,20 +190,48 @@
       .treatment-flexible-block__text {
         color: rgba(255, 255, 255, 0.9);
       }
+
+      .treatment-flexible-block__btn {
+        background-color: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+        }
+      }
     }
 
-    // Image right layout
-    &--image_right {
-      .grid-x {
-        @include breakpoint(medium) {
-          flex-direction: row-reverse;
+    // Theme modifiers - Navy theme (Navy background + White text)
+    &--theme-navy {
+      .treatment-flexible-block__content-wrap {
+        background-color: #006ba8;
+        color: #ffffff;
+      }
+
+      .treatment-flexible-block__title {
+        color: #ffffff;
+      }
+
+      .treatment-flexible-block__text {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .treatment-flexible-block__btn {
+        background-color: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
         }
       }
     }
   }
 
   // Image wrapper - takes exactly 50% width
-
   .treatment-flexible-block__image-wrap {
     flex: 0 0 50%;
     width: 50%;
@@ -397,7 +273,7 @@
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: flex-start; // Default positioning
+    justify-content: flex-start;
     padding: 70px 50px;
 
     @include breakpoint(xlarge) {
@@ -422,9 +298,31 @@
 
   // Content inner - default styling
   .treatment-flexible-block__content {
-    // Default values - will be overridden by positioning classes above
-    width: 100%;
     margin: 0 auto;
+    width: 70%;
+  }
+
+  // Content alignment modifiers
+  .treatment-flexible-block--content-center .treatment-flexible-block__content {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .treatment-flexible-block--content-left .treatment-flexible-block__content {
+    width: 70%;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .treatment-flexible-block--content-right .treatment-flexible-block__content {
+    width: 70%;
+    margin: 0;
+    margin-left: auto;
+  }
+
+  .treatment-flexible-block--content-full .treatment-flexible-block__content {
+    width: 100%;
+    margin: 0;
   }
 
   .treatment-flexible-block__title {
@@ -516,6 +414,58 @@
     em,
     i {
       font-style: italic;
+    }
+  }
+
+  .treatment-flexible-block__button {
+    margin-top: 25px;
+
+    @include breakpoint(xlarge) {
+      margin-top: 30px;
+    }
+
+    @include breakpoint(medium only) {
+      margin-top: 20px;
+    }
+
+    @include breakpoint(small down) {
+      margin-top: 15px;
+    }
+  }
+
+  .treatment-flexible-block__btn {
+    padding: 16px 35px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: normal;
+
+    @include breakpoint(xlarge) {
+      padding: 18px 40px;
+      font-size: 18px;
+    }
+
+    @include breakpoint(large only) {
+      padding: 15px 32px;
+      font-size: 16px;
+    }
+
+    @include breakpoint(medium only) {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+
+    @include breakpoint(small down) {
+      padding: 12px 25px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      opacity: 0.9;
     }
   }
 }

@@ -35,160 +35,10 @@
       }
     }
 
-    // Text position + Width control classes combined
-    // LEFT alignment - content starts from left edge
-    &--text-left {
+    // Theme modifiers - Light theme (White background + Black text)
+    &--theme-light {
       .flexible-block__content-wrap {
-        justify-content: flex-start;
-        text-align: left;
-      }
-
-      &.flexible-block--width-full .flexible-block__content {
-        width: 100%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-large .flexible-block__content {
-        width: 80%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-medium .flexible-block__content {
-        width: 60%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-small .flexible-block__content {
-        width: 40%;
-        margin-left: 0;
-        margin-right: auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-
-    // CENTER alignment - content centers within wrapper
-    &--text-center {
-      .flexible-block__content-wrap {
-        justify-content: center;
-        text-align: center;
-      }
-
-      &.flexible-block--width-full .flexible-block__content {
-        width: 100%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-large .flexible-block__content {
-        width: 80%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-medium .flexible-block__content {
-        width: 60%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-small .flexible-block__content {
-        width: 40%;
-        margin: 0 auto;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-
-    // RIGHT alignment - content starts from right edge
-    &--text-right {
-      .flexible-block__content-wrap {
-        justify-content: flex-end;
-        text-align: left;
-      }
-
-      &.flexible-block--width-full .flexible-block__content {
-        width: 100%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-large .flexible-block__content {
-        width: 80%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-medium .flexible-block__content {
-        width: 60%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-
-      &.flexible-block--width-small .flexible-block__content {
-        width: 40%;
-        margin-left: auto;
-        margin-right: 0;
-
-        @include breakpoint(medium down) {
-          width: 100%;
-          margin: 0;
-        }
-      }
-    }
-    &--light {
-      .flexible-block__content-wrap {
+        background-color: #ffffff;
         color: #333333;
       }
 
@@ -212,9 +62,37 @@
       }
     }
 
-    // Dark background blocks
-    &--dark {
+    // Theme modifiers - Blue theme (Blue background + White text)
+    &--theme-blue {
       .flexible-block__content-wrap {
+        background-color: #00a2ff;
+        color: #ffffff;
+      }
+
+      .flexible-block__title {
+        color: #ffffff;
+      }
+
+      .flexible-block__text {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .flexible-block__btn {
+        background-color: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+        }
+      }
+    }
+
+    // Theme modifiers - Dark theme (Dark background + White text)
+    &--theme-navy {
+      .flexible-block__content-wrap {
+        background-color: #006ba8;
         color: #ffffff;
       }
 
@@ -281,7 +159,7 @@
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: flex-start; // Default positioning
+    justify-content: flex-start;
     padding: 70px 50px;
 
     @include breakpoint(xlarge) {
@@ -306,9 +184,31 @@
 
   // Content inner - default styling
   .flexible-block__content {
-    // Default values - will be overridden by positioning classes above
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
+  }
+
+  // Content alignment modifiers
+  .flexible-block--content-center .flexible-block__content {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .flexible-block--content-left .flexible-block__content {
+    width: 70%;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .flexible-block--content-right .flexible-block__content {
+    width: 70%;
+    margin: 0;
+    margin-left: auto;
+  }
+
+  .flexible-block--content-full .flexible-block__content {
+    width: 100%;
+    margin: 0;
   }
 
   .flexible-block__title {

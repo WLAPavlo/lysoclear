@@ -14,8 +14,10 @@ $banner_image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID
 <section class="news-banner">
     <div class="news-banner__inner" style="background-image: url('<?php echo esc_url($banner_image_url); ?>');">
         <div class="news-banner__content">
-            <div class="cell news-title-block">
-                <h1 class="news-title"><?php echo esc_html($banner_title); ?></h1>
+            <div class="grid-container">
+                <div class="news-title-block">
+                    <h1 class="news-title"><?php echo esc_html($banner_title); ?></h1>
+                </div>
             </div>
         </div>
     </div>
@@ -27,8 +29,8 @@ $banner_image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID
         <div class="grid-x">
             <div class="cell">
                 <?php
-                // Show 9 posts per page
-                $posts_per_page = 9;
+                // Get posts per page from WordPress Reading Settings
+                $posts_per_page = get_option('posts_per_page');
 
                 // Get current page
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

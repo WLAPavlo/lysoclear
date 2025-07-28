@@ -1,19 +1,21 @@
 <?php
-// Get approved comments from WordPress
-$comments = get_comments([
-    'status' => 'approve',
-    'number' => 10, // Limit to 10 testimonials
-    'orderby' => 'comment_date',
+// Get testimonials from custom post type
+$testimonials = new WP_Query([
+    'post_type' => 'testimonial',
+    'posts_per_page' => 10,
+    'post_status' => 'publish',
+    'orderby' => 'date',
     'order' => 'DESC',
 ]);
 
-if (!empty($comments)) { ?>
+if ($testimonials->have_posts()) { ?>
     <section class="testimonials-section">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell">
                     <div class="testimonials-slider" id="testimonials-slider">
-                        <?php foreach ($comments as $comment) { ?>
+                        <?php while ($testimonials->have_posts()) {
+                            $testimonials->the_post(); ?>
                             <div class="testimonial-slide">
                                 <div class="testimonial-item">
                                     <div class="testimonial-quote">
@@ -26,10 +28,10 @@ if (!empty($comments)) { ?>
                                     </div>
                                     <div class="testimonial-content">
                                         <p class="testimonial-text">
-                                            <?php echo esc_html($comment->comment_content); ?>
+                                            <?php the_content(); ?>
                                         </p>
                                         <p class="testimonial-author">
-                                            <?php echo esc_html($comment->comment_author); ?>
+                                            <?php the_title(); ?>
                                         </p>
                                     </div>
                                 </div>
@@ -77,4 +79,5 @@ if (!empty($comments)) { ?>
             </div>
         </div>
     </section>
+    <?php wp_reset_postdata(); ?>
 <?php } ?>

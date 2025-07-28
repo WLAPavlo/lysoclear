@@ -1,0 +1,90 @@
+{
+  "key": "group_testimonials",
+  "title": "Testimonial Fields",
+  "fields": [
+    {
+      "key": "field_testimonial_author_position",
+      "label": "Author Position",
+      "name": "author_position",
+      "type": "text",
+      "instructions": "Position or title of the person giving testimonial",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "e.g. CEO, Customer, etc.",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_testimonial_company",
+      "label": "Company",
+      "name": "company",
+      "type": "text",
+      "instructions": "Company or organization name",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Company name",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_testimonial_rating",
+      "label": "Rating",
+      "name": "rating",
+      "type": "select",
+      "instructions": "Star rating for the testimonial",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "30",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "5": "5 Stars",
+        "4": "4 Stars",
+        "3": "3 Stars",
+        "2": "2 Stars",
+        "1": "1 Star"
+      },
+      "default_value": "5",
+      "allow_null": 0,
+      "multiple": 0,
+      "ui": 1,
+      "return_format": "value",
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "testimonial"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Fields for testimonial custom post type",
+  "modified": 1640995400
+}

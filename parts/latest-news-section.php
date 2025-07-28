@@ -1,6 +1,6 @@
 <?php
-// Get posts count from WordPress Reading Settings (standard posts_per_page)
-$posts_count = get_option('posts_per_page', 10);
+// Get posts count from WordPress Reading Settings
+$posts_count = get_option('posts_per_page');
 
 $latest_posts = new WP_Query([
     'post_type' => 'post',
