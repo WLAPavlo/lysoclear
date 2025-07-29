@@ -105,6 +105,21 @@ $(document).on('ready', function () {
     $mobileMenu.toggleClass('is-open');
     $overlay.toggleClass('is-open');
     $('body').toggleClass('mobile-menu-open');
+
+    // Add smooth animation delay
+    if ($mobileMenu.hasClass('is-open')) {
+      setTimeout(() => {
+        $mobileMenu.find('.header-menu li').each(function (index) {
+          $(this).css({
+            animation: `slideInRight 0.3s ease forwards ${index * 0.1}s`,
+            opacity: '0',
+          });
+          setTimeout(() => {
+            $(this).css('opacity', '1');
+          }, index * 100 + 300);
+        });
+      }, 100);
+    }
   });
 
   // Close mobile menu when clicking overlay
@@ -117,10 +132,33 @@ $(document).on('ready', function () {
 
   // Close mobile menu on menu item click
   $('.mobile-menu .header-menu a').on('click', function () {
-    $('.hamburger').removeClass('is-active');
-    $('.mobile-menu').removeClass('is-open');
-    $('.mobile-menu-overlay').removeClass('is-open');
-    $('body').removeClass('mobile-menu-open');
+    // Add delay for better UX
+    setTimeout(() => {
+      $('.hamburger').removeClass('is-active');
+      $('.mobile-menu').removeClass('is-open');
+      $('.mobile-menu-overlay').removeClass('is-open');
+      $('body').removeClass('mobile-menu-open');
+    }, 200);
+  });
+
+  /**
+   * Enhanced submenu functionality for mobile
+   */
+  $('.mobile-menu .has-dropdown > a').on('click', function (e) {
+    e.preventDefault();
+    const $parent = $(this).parent();
+    const $submenu = $parent.find('.submenu');
+
+    // Toggle submenu
+    $submenu.slideToggle(400, 'easeInOutCubic').toggleClass('is-open');
+    $parent.toggleClass('submenu-open');
+
+    // Close other submenus
+    $('.mobile-menu .has-dropdown').not($parent).removeClass('submenu-open');
+    $('.mobile-menu .submenu')
+      .not($submenu)
+      .slideUp(400, 'easeInOutCubic')
+      .removeClass('is-open');
   });
 
   /**

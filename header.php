@@ -42,6 +42,7 @@
                             'theme_location' => 'header-menu',
                             'menu_class' => 'menu header-menu',
                             'container' => false,
+                            'walker' => new theme\FoundationNavigation(),
                         ]); ?>
                     </nav>
                 <?php } ?>

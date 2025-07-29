@@ -10,7 +10,7 @@
                     <div class="cell large-4 medium-6 small-12 features-item">
                         <?php if ($icon) { ?>
                             <div class="features-item__icon">
-                                <?php echo wp_get_attachment_image($icon['ID'], 'medium', false, ['alt' => $icon['alt']]); ?>
+                                <?php echo wp_get_attachment_image($icon['ID'], 'medium'); ?>
                             </div>
                         <?php } ?>
                         <?php if ($content) { ?>

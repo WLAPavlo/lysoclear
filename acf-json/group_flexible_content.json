@@ -46,32 +46,6 @@
               "placeholder": ""
             },
             {
-              "key": "field_content_alignment",
-              "label": "Content Alignment",
-              "name": "content_alignment",
-              "type": "select",
-              "instructions": "Choose how to align the content within its section",
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "40",
-                "class": "",
-                "id": ""
-              },
-              "choices": {
-                "center": "Center (70% width, centered)",
-                "left": "Left Aligned (70% width, left side)",
-                "right": "Right Aligned (70% width, right side)",
-                "full": "Full Width (100% width)"
-              },
-              "default_value": "center",
-              "allow_null": 0,
-              "multiple": 0,
-              "ui": 1,
-              "return_format": "value",
-              "ajax": 0,
-              "placeholder": ""
-            },
-            {
               "key": "field_background_color",
               "label": "Background Color",
               "name": "block_theme",
@@ -79,7 +53,7 @@
               "instructions": "",
               "conditional_logic": 0,
               "wrapper": {
-                "width": "30",
+                "width": "70",
                 "class": "",
                 "id": ""
               },

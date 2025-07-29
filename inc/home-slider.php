@@ -265,6 +265,18 @@ add_shortcode('slider', function () {
                                 <div class="cell">
                                     <h3><?php the_title(); ?></h3>
                                     <?php the_content(); ?>
+                                    <?php
+                                    // Check if there's a button link field
+                                    $button_link = get_field('slide_button_link');
+                                    $button_text = get_field('slide_button_text') ?: 'Learn more';
+
+                                    if ($button_link) { ?>
+                                        <div class="home-slide__button">
+                                            <a href="<?php echo esc_url($button_link); ?>" class="button home-slide__btn">
+                                                <?php echo esc_html($button_text); ?>
+                                            </a>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

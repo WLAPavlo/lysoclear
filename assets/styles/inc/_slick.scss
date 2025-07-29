@@ -14,6 +14,19 @@ $slick-arrow-size: 2rem;
 @import '~slick-carousel/slick/slick.scss';
 @import '~slick-carousel/slick/slick-theme.scss';
 
+// Override default slick background
+.slick-slider {
+  background: transparent !important;
+}
+
+.slick-list {
+  background: transparent !important;
+}
+
+.slick-track {
+  background: transparent !important;
+}
+
 /* Arrows */
 .slick-arrow {
   width: calc($slick-arrow-size / 2);
@@ -35,12 +48,13 @@ $slick-arrow-size: 2rem;
 
 /* Dots */
 .slick-dotted.slick-slider {
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .slick-dots {
-  bottom: -2rem;
+  bottom: 2rem;
   display: block !important; // Force display for all slick dots
+  background: transparent !important;
 
   li {
     display: inline-block;

@@ -35,7 +35,8 @@ class FoundationNavigation extends \Walker_Nav_Menu
     public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output)
     {
         $id_field = $this->db_fields['id'];
-        if (!empty($children_elements[$element->{$id_field}])) {
+        // Only add has-dropdown class if there are actual child elements
+        if (!empty($children_elements[$element->{$id_field}]) && is_array($children_elements[$element->{$id_field}]) && count($children_elements[$element->{$id_field}]) > 0) {
             $element->classes[] = 'has-dropdown';
         }
         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);

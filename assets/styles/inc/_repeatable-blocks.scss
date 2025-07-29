@@ -35,11 +35,34 @@
       }
     }
 
+    // Add transparency overlay for first block on home page
+    &:first-child {
+      // Remove transparency overlay - it will be handled by theme modifiers
+    }
+
     // Theme modifiers - Light theme (White background + Black text)
     &--theme-light {
       .flexible-block__content-wrap {
         background-color: #ffffff;
         color: #333333;
+
+        // Add subtle transparency overlay
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.95);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .flexible-block__content {
+          position: relative;
+          z-index: 2;
+        }
       }
 
       .flexible-block__title {
@@ -67,6 +90,24 @@
       .flexible-block__content-wrap {
         background-color: #00a2ff;
         color: #ffffff;
+
+        // Add subtle transparency overlay
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 162, 255, 0.95);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .flexible-block__content {
+          position: relative;
+          z-index: 2;
+        }
       }
 
       .flexible-block__title {
@@ -94,6 +135,24 @@
       .flexible-block__content-wrap {
         background-color: #006ba8;
         color: #ffffff;
+
+        // Add subtle transparency overlay
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 107, 168, 0.95);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .flexible-block__content {
+          position: relative;
+          z-index: 2;
+        }
       }
 
       .flexible-block__title {
@@ -151,6 +210,16 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+
+    // Ensure all images have consistent aspect ratio
+    aspect-ratio: 4/3;
+
+    @include breakpoint(small down) {
+      aspect-ratio: 16/9;
+      transform: scale(1);
+    }
   }
 
   // Content wrapper - takes exactly 50% width, background extends fully
@@ -161,6 +230,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: 70px 50px;
+    position: relative;
 
     @include breakpoint(xlarge) {
       padding: 80px 60px;
@@ -190,77 +260,54 @@
     @include breakpoint(medium down) {
       width: 100%;
       margin: 0;
-      text-align: center;
+      text-align: left;
     }
   }
 
-  // Content alignment modifiers
-  .flexible-block--content-center .flexible-block__content {
-    width: 85%;
-    margin: 0 auto;
-
-    @include breakpoint(medium down) {
-      width: 100%;
-      margin: 0;
-      text-align: center;
-    }
-  }
-
-  .flexible-block--content-left .flexible-block__content {
-    width: 85%;
-    margin: 0;
+  // Content alignment based on image position
+  .flexible-block--image_left .flexible-block__content {
+    // Image left = content right, so align content to the left side of its container
+    margin-left: 0;
     margin-right: auto;
 
     @include breakpoint(medium down) {
-      width: 100%;
-      margin: 0;
-      text-align: center;
+      text-align: left;
     }
   }
 
-  .flexible-block--content-right .flexible-block__content {
-    width: 85%;
-    margin: 0;
+  .flexible-block--image_right .flexible-block__content {
+    // Image right = content left, so align content to the right side of its container
     margin-left: auto;
+    margin-right: 0;
 
     @include breakpoint(medium down) {
-      width: 100%;
-      margin: 0;
-      text-align: center;
-    }
-  }
-
-  .flexible-block--content-full .flexible-block__content {
-    width: 100%;
-    margin: 0;
-
-    @include breakpoint(medium down) {
-      text-align: center;
+      text-align: left;
     }
   }
 
   .flexible-block__title {
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 30px;
+    text-align: left;
 
     @include breakpoint(xlarge) {
-      font-size: 48px;
+      font-size: 40px;
       margin-bottom: 35px;
     }
 
     @include breakpoint(large only) {
-      font-size: 38px;
+      font-size: 32px;
       margin-bottom: 28px;
     }
 
     @include breakpoint(medium only) {
-      font-size: 34px;
+      font-size: 28px;
       margin-bottom: 25px;
     }
     @include breakpoint(small down) {
-      font-size: 30px;
+      font-size: 24px;
       margin-bottom: 20px;
     }
   }
@@ -269,6 +316,7 @@
     font-size: 17px;
     line-height: 1.6;
     margin-bottom: 35px;
+    text-align: left;
 
     @include breakpoint(xlarge) {
       font-size: 18px;
@@ -292,6 +340,7 @@
 
     p {
       margin-bottom: 18px;
+      text-align: left;
 
       @include breakpoint(xlarge) {
         margin-bottom: 20px;
@@ -310,10 +359,12 @@
     ol {
       margin-left: 20px;
       margin-bottom: 15px;
+      text-align: left;
 
       li {
         margin-bottom: 8px;
         line-height: 1.6;
+        text-align: left;
       }
     }
 

@@ -7,7 +7,7 @@ get_header(); ?>
 <?php
 // Get page title and featured image for banner
 $banner_title = get_the_title();
-$banner_image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full_hd') : 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=1920&h=600&fit=crop';
+$banner_image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full_hd') : 'PLACEHOLDER';
 ?>
 
     <!-- Treatment Banner Section -->

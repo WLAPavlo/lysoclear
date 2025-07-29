@@ -15,6 +15,10 @@
 }
 
 .home-slider {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
   .slick-arrow {
     /* Slick arrows global styles */
   }
@@ -32,10 +36,55 @@
   .slick-dots {
     /* Slick dots global styles */
     font-size: 0;
+    position: absolute !important;
+    bottom: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+
+    // Hide dots on mobile and tablet
+    @include breakpoint(medium down) {
+      display: none !important;
+    }
 
     li {
+      margin: 0 8px !important;
+
       &:only-child {
         display: none;
+      }
+
+      button {
+        width: 14px !important;
+        height: 14px !important;
+        border-radius: 50% !important;
+        border: 2px solid rgba(255, 255, 255, 0.8) !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        outline: none !important;
+
+        &:before {
+          display: none !important;
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3) !important;
+          border-color: rgba(255, 255, 255, 1) !important;
+          transform: scale(1.2) !important;
+        }
+      }
+
+      &.slick-active button {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(255, 255, 255, 1) !important;
+        transform: scale(1.2) !important;
       }
     }
   }
@@ -58,30 +107,37 @@
 
 .home-slide {
   width: 100%;
-  height: 600px;
+  height: 650px;
   transition: height 0.3s ease;
   position: relative;
+  background: transparent !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
 
   @include breakpoint(xlarge) {
-    height: 650px;
+    height: 700px;
   }
 
   @include breakpoint(large only) {
-    height: 580px;
+    height: 620px;
   }
 
   @include breakpoint(medium only) {
-    height: 520px;
+    height: 550px;
   }
 
   @include breakpoint(medium down) {
     height: auto;
-    min-height: 400px;
+    min-height: 450px;
   }
 
   @include breakpoint(small down) {
     height: auto;
-    min-height: 350px;
+    min-height: 400px;
   }
 
   &__inner {
@@ -91,14 +147,18 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
 
     @include breakpoint(medium down) {
       flex-direction: column;
       align-items: stretch;
       min-height: 350px;
+      background-color: transparent !important;
 
       &:before {
         content: '';
@@ -109,14 +169,17 @@
         background-position: center;
         background-repeat: no-repeat;
         background-image: inherit !important;
+        background-color: transparent !important;
       }
     }
 
     @include breakpoint(small down) {
       min-height: 300px;
+      background-color: transparent !important;
 
       &:before {
         height: 200px;
+        background-color: transparent !important;
       }
     }
   }
@@ -127,26 +190,26 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 50%;
+    width: 55%;
     max-width: none;
     background-color: rgba(0, 162, 255, 0.9);
     color: #ffffff;
-    padding: 35px 0 35px 60px;
+    padding: 40px 70px 40px 70px;
     text-align: left;
 
     @media (min-width: 2560px) {
-      width: 45%;
-      padding: 50px 0 50px 80px;
+      width: 50%;
+      padding: 60px 90px 60px 90px;
     }
 
     @include breakpoint(xlarge) {
-      width: 50%;
-      padding: 40px 0 40px 70px;
+      width: 55%;
+      padding: 45px 80px 45px 80px;
     }
 
     @include breakpoint(large only) {
-      width: 50%;
-      padding: 32px 0 32px 55px;
+      width: 55%;
+      padding: 35px 60px 35px 60px;
     }
 
     @include breakpoint(medium only) {
@@ -155,9 +218,10 @@
       left: auto;
       top: auto;
       transform: none;
-      padding: 25px 20px;
+      padding: 30px 25px;
       margin-top: 0;
       order: 2;
+      background-color: rgba(0, 162, 255, 0.95);
     }
 
     @include breakpoint(medium down) {
@@ -166,9 +230,39 @@
       left: auto;
       top: auto;
       transform: none;
-      padding: 25px 20px;
+      padding: 30px 25px;
       margin-top: 0;
       order: 2;
+      background-color: rgba(0, 162, 255, 0.95);
+    }
+
+    // Ensure content starts from the middle of the blue block
+    .grid-container {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: none;
+      width: 100%;
+    }
+
+    .grid-x {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .cell {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 500px;
+
+      @include breakpoint(medium down) {
+        margin-left: 0;
+        transform: none;
+        width: 100%;
+        max-width: none;
+      }
     }
 
     h1,
@@ -176,7 +270,7 @@
     h3 {
       color: #ffffff;
       font-size: 24px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       line-height: 1.3;
       font-weight: 600;
       text-align: left;
@@ -190,37 +284,37 @@
 
       @include breakpoint(xlarge) {
         font-size: 28px;
-        margin-bottom: 18px;
+        margin-bottom: 22px;
       }
 
       @include breakpoint(large only) {
         font-size: 24px;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
       }
 
       @include breakpoint(medium only) {
         font-size: 22px;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
       }
 
       @include breakpoint(medium down) {
         font-size: 20px;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
       }
 
       @media (max-width: 767px) and (min-width: 640px) {
         font-size: 18px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       @media (max-width: 639px) and (min-width: 480px) {
         font-size: 17px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       @include breakpoint(small down) {
         font-size: 22px;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
         text-align: center;
       }
     }
@@ -230,7 +324,7 @@
       color: #ffffff;
       font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
 
       @media (min-width: 2560px) {
         font-size: 20px;
@@ -241,38 +335,38 @@
 
       @include breakpoint(xlarge) {
         font-size: 16px;
-        margin-bottom: 18px;
+        margin-bottom: 22px;
         line-height: 1.7;
       }
 
       @include breakpoint(large only) {
         font-size: 14px;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
       }
 
       @include breakpoint(medium only) {
         font-size: 13px;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
       }
 
       @include breakpoint(medium down) {
         font-size: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
       }
 
       @media (max-width: 767px) and (min-width: 640px) {
         font-size: 12px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       @media (max-width: 639px) and (min-width: 480px) {
         font-size: 11px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       @include breakpoint(small down) {
         font-size: 16px;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
         text-align: center;
       }
     }
@@ -284,16 +378,17 @@
       padding: 12px 24px;
       font-size: 14px;
       transition: all 0.3s ease;
-      margin-top: 15px;
+      margin-top: 25px;
       border-radius: 4px;
       font-weight: 500;
       display: inline-block;
       cursor: pointer;
+      text-decoration: none;
 
       @media (min-width: 2560px) {
         padding: 18px 36px;
         font-size: 18px;
-        margin-top: 25px;
+        margin-top: 35px;
         border-radius: 6px;
         display: inline-block;
         text-align: left;
@@ -305,43 +400,43 @@
       @include breakpoint(xlarge) {
         padding: 14px 28px;
         font-size: 15px;
-        margin-top: 20px;
+        margin-top: 30px;
       }
 
       @include breakpoint(large only) {
         padding: 12px 24px;
         font-size: 13px;
-        margin-top: 15px;
+        margin-top: 25px;
       }
 
       @include breakpoint(medium only) {
         padding: 10px 20px;
         font-size: 12px;
-        margin-top: 12px;
+        margin-top: 20px;
       }
 
       @include breakpoint(medium down) {
         padding: 9px 18px;
         font-size: 11px;
-        margin-top: 12px;
+        margin-top: 20px;
       }
 
       @media (max-width: 767px) and (min-width: 640px) {
         padding: 8px 16px;
         font-size: 11px;
-        margin-top: 10px;
+        margin-top: 18px;
       }
 
       @media (max-width: 639px) and (min-width: 480px) {
         padding: 8px 15px;
         font-size: 10px;
-        margin-top: 10px;
+        margin-top: 18px;
       }
 
       @include breakpoint(small down) {
         padding: 12px 24px;
         font-size: 16px;
-        margin-top: 20px;
+        margin-top: 25px;
         display: block;
         text-align: center;
         width: 200px;
@@ -355,8 +450,216 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
       }
+
+      &:focus {
+        outline: 2px solid rgba(255, 255, 255, 0.5);
+        outline-offset: 2px;
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    // Specific styles for the home slide button
+    .home-slide__btn {
+      background-color: transparent;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      margin-top: 25px;
+      border-radius: 0;
+      font-weight: 500;
+      display: inline-block;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+
+      @media (min-width: 2560px) {
+        padding: 18px 36px;
+        font-size: 18px;
+        margin-top: 35px;
+        border-radius: 0;
+      }
+
+      @include breakpoint(xlarge) {
+        padding: 14px 28px;
+        font-size: 15px;
+        margin-top: 30px;
+      }
+
+      @include breakpoint(large only) {
+        padding: 12px 24px;
+        font-size: 13px;
+        margin-top: 25px;
+      }
+
+      @include breakpoint(medium only) {
+        padding: 10px 20px;
+        font-size: 12px;
+        margin-top: 20px;
+      }
+
+      @include breakpoint(medium down) {
+        padding: 9px 18px;
+        font-size: 11px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 767px) and (min-width: 640px) {
+        padding: 8px 16px;
+        font-size: 11px;
+        margin-top: 18px;
+      }
+
+      @media (max-width: 639px) and (min-width: 480px) {
+        padding: 8px 15px;
+        font-size: 10px;
+        margin-top: 18px;
+      }
+
+      @include breakpoint(small down) {
+        padding: 12px 24px;
+        font-size: 16px;
+        margin-top: 25px;
+        display: block;
+        text-align: center;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &:hover {
+        background-color: #ffffff;
+        color: #00a2ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+      }
+
+      &:focus {
+        outline: 2px solid rgba(255, 255, 255, 0.5);
+        outline-offset: 2px;
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .home-slide__button {
+      margin: 0;
+
+      @include breakpoint(small down) {
+        text-align: center;
+      }
     }
   }
+}
+
+// Complete fix for white background issues
+.home-slider,
+.home-slider.slick-slider,
+.home-slider .slick-list,
+.home-slider .slick-track,
+.home-slider .slick-slide {
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+// Override any slick default styles that might add white background
+.slick-slider {
+  background: transparent !important;
+
+  .slick-list {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .slick-track {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .slick-slide {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+// Ensure dots are properly positioned
+.home-slider .slick-dots {
+  bottom: 40px !important;
+  background: transparent !important;
+
+  @include breakpoint(medium down) {
+    display: none !important;
+  }
+
+  @include breakpoint(small down) {
+    display: none !important;
+  }
+}
+
+// Ensure proper spacing after slider
+.home-slider + .features-section,
+.features-section {
+  margin-top: 0 !important;
+}
+
+// Additional mobile fixes
+@include breakpoint(medium down) {
+  .home-slider,
+  .home-slider.slick-slider,
+  .home-slider .slick-list,
+  .home-slider .slick-track,
+  .home-slider .slick-slide {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .home-slide__inner {
+    background-color: transparent !important;
+
+    &:before {
+      background-color: transparent !important;
+    }
+  }
+
+  .features-section {
+    margin-top: 0 !important;
+    padding-top: 50px !important;
+  }
+}
+
+// Force transparent background on all slider elements
+.home-slider,
+.home-slider * {
+  margin-bottom: 0 !important;
+}
+
+// Override any inherited background colors
+.home-slider {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+// Make sure slick doesn't add any default styling
+.slick-initialized {
+  background: transparent !important;
 }
 
 .blue-section {
