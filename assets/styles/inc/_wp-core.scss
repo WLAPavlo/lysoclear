@@ -186,10 +186,10 @@ ul.pagination {
 /* Dots Pagination */
 .pagination-dots {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-  margin: 40px 0;
+  margin-bottom: 2rem !important;
 
   .pagination-dot {
     display: block;
@@ -210,6 +210,18 @@ ul.pagination {
       transform: scale(1.2);
     }
   }
+}
+
+/* News page specific pagination - left aligned */
+.page-template-template-news .pagination-dots,
+.news-posts-section .pagination-dots {
+  justify-content: flex-start;
+}
+
+/* Home page specific pagination - center aligned */
+.page-template-template-home .pagination-dots,
+.latest-news-section .pagination-dots {
+  justify-content: center;
 }
 
 /* Comments block */

@@ -105,27 +105,27 @@
     padding: 25px 0;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: normal;
 
     @include breakpoint(xlarge) {
       padding: 30px 0;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     @include breakpoint(large only) {
       padding: 22px 0;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     @include breakpoint(medium only) {
       padding: 18px 0;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     @include breakpoint(small down) {
       padding: 15px 0;
-      font-size: 11px;
+      font-size: 10px;
     }
 
     .footer-info {
@@ -143,18 +143,40 @@
       span {
         display: inline-flex;
         align-items: center;
-        white-space: nowrap;
+        white-space: normal;
         text-transform: uppercase;
+        word-break: break-word;
+        hyphens: auto;
+        font-size: 12px;
 
         @include breakpoint(small down) {
           white-space: normal;
           text-align: center;
+          word-break: break-word;
+          hyphens: auto;
+          max-width: 100%;
+          font-size: 10px;
+        }
+
+        @include breakpoint(medium only) {
+          font-size: 11px;
+        }
+
+        @include breakpoint(large only) {
+          font-size: 12px;
+        }
+
+        @include breakpoint(xlarge) {
+          font-size: 13px;
         }
 
         a {
           color: inherit;
           text-decoration: none;
           transition: color 0.3s ease;
+          word-break: break-word;
+          hyphens: auto;
+          font-size: inherit;
 
           &:hover {
             color: rgba(255, 255, 255, 0.8);
@@ -163,19 +185,20 @@
 
         &::after {
           content: '•';
-          margin: 0 15px;
+          margin: 0 10px;
           color: rgba(255, 255, 255, 0.6);
+          flex-shrink: 0;
 
           @include breakpoint(xlarge) {
-            margin: 0 20px;
-          }
-
-          @include breakpoint(large only) {
             margin: 0 15px;
           }
 
+          @include breakpoint(large only) {
+            margin: 0 12px;
+          }
+
           @include breakpoint(medium only) {
-            margin: 0 10px;
+            margin: 0 8px;
           }
 
           @include breakpoint(small down) {
