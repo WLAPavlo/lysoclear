@@ -91,16 +91,14 @@ if ($latest_posts->have_posts()) { ?>
                         ?>
                     </div>
 
-                    <!-- Custom dots pagination for home news slider -->
-                    <?php if ($max_pages > 1) { ?>
-                        <div class="pagination-wrapper">
-                            <div class="pagination-dots home-news-dots">
-                                <?php for ($i = 1; $i <= $max_pages; $i++) { ?>
-                                    <a href="#" class="pagination-dot <?php echo $i === 1 ? 'active' : ''; ?>" data-slide="<?php echo $i - 1; ?>"></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    <?php } ?>
+                    <?php
+                    // Create a fake query for pagination
+                    if ($max_pages > 1) {
+                        $fake_query = new stdClass();
+                        $fake_query->max_num_pages = $max_pages;
+                        foundation_pagination($fake_query);
+                    }
+                    ?>
 
                     <script>
                         jQuery(document).ready(function($) {
@@ -121,20 +119,20 @@ if ($latest_posts->have_posts()) { ?>
                                 });
 
                                 // Custom dots functionality
-                                $('.home-news-dots .pagination-dot').on('click', function(e) {
+                                $('.pagination-dots .pagination-dot').on('click', function(e) {
                                     e.preventDefault();
-                                    var slideIndex = $(this).data('slide');
+                                    var slideIndex = $(this).index();
                                     $('#home-news-slider').slick('slickGoTo', slideIndex);
 
                                     // Update active dot
-                                    $('.home-news-dots .pagination-dot').removeClass('active');
+                                    $('.pagination-dots .pagination-dot').removeClass('active');
                                     $(this).addClass('active');
                                 });
 
                                 // Update dots on slide change
                                 $('#home-news-slider').on('afterChange', function(event, slick, currentSlide) {
-                                    $('.home-news-dots .pagination-dot').removeClass('active');
-                                    $('.home-news-dots .pagination-dot').eq(currentSlide).addClass('active');
+                                    $('.pagination-dots .pagination-dot').removeClass('active');
+                                    $('.pagination-dots .pagination-dot').eq(currentSlide).addClass('active');
                                 });
                             }
                         });

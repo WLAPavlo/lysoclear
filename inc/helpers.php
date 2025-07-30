@@ -32,7 +32,7 @@ function show_custom_logo($size = 'medium'): void
  * @param string $query
  * @param string $type Type of pagination: 'default' or 'dots'
  */
-function foundation_pagination($query = '', $type = 'default'): void
+function foundation_pagination($query = '', $type = 'dots'): void
 {
     if (empty($query)) {
         global $wp_query;

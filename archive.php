@@ -19,9 +19,7 @@ get_header(); ?>
                         <?php get_template_part('parts/loop', 'post'); // Post item?>
                     <?php } ?>
                 <?php } ?>
-                <!-- BEGIN of pagination -->
                 <?php foundation_pagination(); ?>
-                <!-- END of pagination -->
             </div>
             <!-- END of Archive Content -->
             <!-- BEGIN of Sidebar -->

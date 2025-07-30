@@ -27,8 +27,7 @@ get_header(); ?>
                 <?php } else { ?>
                     <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'fwp'); ?></p>
                 <?php } ?>
-                <!-- Dots Pagination -->
-                <?php foundation_pagination('', 'dots'); ?>
+                <?php foundation_pagination(); ?>
             </main>
         </div>
         <!-- END of search results -->
