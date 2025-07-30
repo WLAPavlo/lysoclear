@@ -281,7 +281,6 @@ add_shortcode('slider', function () {
                             </div>
                         </div>
                     </div>
-
                 </div>
             <?php } ?>
         </div><!-- END of  #home-slider-->
