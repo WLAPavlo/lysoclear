@@ -214,13 +214,15 @@ ul.pagination {
 
 /* News page specific pagination - left aligned */
 .page-template-template-news .pagination-dots,
-.news-posts-section .pagination-dots {
+.news-posts-section .pagination-dots,
+.news-dots {
   justify-content: flex-start;
 }
 
 /* Home page specific pagination - center aligned */
 .page-template-template-home .pagination-dots,
-.latest-news-section .pagination-dots {
+.latest-news-section .pagination-dots,
+.home-news-dots {
   justify-content: center;
 }
 

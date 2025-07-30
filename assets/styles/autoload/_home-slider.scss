@@ -648,18 +648,6 @@
 // Force transparent background on all slider elements
 .home-slider,
 .home-slider * {
-  margin-bottom: 0 !important;
-}
-
-// Override any inherited background colors
-.home-slider {
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-// Make sure slick doesn't add any default styling
-.slick-initialized {
-  background: transparent !important;
 }
 
 .blue-section {

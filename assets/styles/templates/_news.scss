@@ -136,9 +136,29 @@
 .news-posts-section {
   padding: 0;
   background-color: #ffffff;
+  padding-top: 60px;
+
+  @include breakpoint(xxlarge) {
+    padding-top: 80px;
+  }
+
+  @include breakpoint(xlarge only) {
+    padding-top: 70px;
+  }
+
+  @include breakpoint(large only) {
+    padding-top: 60px;
+  }
+
+  @include breakpoint(medium only) {
+    padding-top: 50px;
+  }
+
+  @include breakpoint(small down) {
+    padding-top: 40px;
+  }
 
   .grid-container {
-    padding-top: 0;
     padding-bottom: 60px;
 
     @include breakpoint(xxlarge) {
@@ -192,6 +212,63 @@
   outline: none;
 }
 
+/* Custom dots for news page */
+.news-dots {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0;
+  width: 100%;
+
+  .pagination-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 162, 255, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 162, 255, 0.6);
+      transform: scale(1.2);
+    }
+
+    &.active {
+      background-color: #00a2ff;
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* Top pagination styling */
+.pagination-wrapper--top {
+  margin-bottom: 50px;
+  margin-top: 0;
+
+  @include breakpoint(xxlarge) {
+    margin-bottom: 60px;
+  }
+
+  @include breakpoint(xlarge only) {
+    margin-bottom: 55px;
+  }
+
+  @include breakpoint(large only) {
+    margin-bottom: 50px;
+  }
+
+  @include breakpoint(medium only) {
+    margin-bottom: 40px;
+  }
+
+  @include breakpoint(small down) {
+    margin-bottom: 35px;
+  }
+}
+
 /* ---------------------------------------
 	News Grid with Gap Support - З @include breakpoint()
 --------------------------------------- */
@@ -230,20 +307,20 @@
     padding: 0;
     margin: 0;
 
-    /* Foundation - З @include breakpoint() */
-    &.large-4 {
+    /* Foundation - Updated for 2 columns */
+    &.large-6 {
       @include breakpoint(large up) {
-        flex: 0 0 calc(33.333% - 27px) !important;
-        max-width: calc(33.333% - 27px) !important;
-        width: calc(33.333% - 27px) !important;
+        flex: 0 0 calc(50% - 15px) !important;
+        max-width: calc(50% - 15px) !important;
+        width: calc(50% - 15px) !important;
       }
     }
 
-    &.medium-4 {
+    &.medium-6 {
       @include breakpoint(medium only) {
-        flex: 0 0 calc(33.333% - 17px) !important;
-        max-width: calc(33.333% - 17px) !important;
-        width: calc(33.333% - 17px) !important;
+        flex: 0 0 calc(50% - 12.5px) !important;
+        max-width: calc(50% - 12.5px) !important;
+        width: calc(50% - 12.5px) !important;
       }
     }
 
@@ -262,25 +339,31 @@
     width: 100%;
   }
 
-  /* Pagination styles */
-  .pagination {
-    margin: 30px 0;
-    padding: 0;
-    text-align: center;
+  /* Bottom pagination styles */
+  .pagination-wrapper:not(.pagination-wrapper--top) {
+    margin: 50px 0 0 0;
+    text-align: left;
     width: 100%;
-  }
 
-  .pagination-dots {
-    margin: 30px 0;
-    padding: 0;
-    text-align: center;
-    width: 100%;
-  }
+    @include breakpoint(xxlarge) {
+      margin: 60px 0 0 0;
+    }
 
-  .pagination-container {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+    @include breakpoint(xlarge only) {
+      margin: 55px 0 0 0;
+    }
+
+    @include breakpoint(large only) {
+      margin: 50px 0 0 0;
+    }
+
+    @include breakpoint(medium only) {
+      margin: 40px 0 0 0;
+    }
+
+    @include breakpoint(small down) {
+      margin: 35px 0 0 0;
+    }
   }
 }
 

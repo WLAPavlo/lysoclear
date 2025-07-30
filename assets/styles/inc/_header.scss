@@ -91,21 +91,10 @@
 
       &.has-dropdown {
         a {
-          &::after {
-            content: '\f107';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            margin-left: 8px;
-            font-size: 12px;
-            transition: transform 0.3s ease;
-          }
+          // Remove dropdown arrow - it's not needed
         }
 
         &:hover {
-          a::after {
-            transform: rotate(180deg);
-          }
-
           .submenu {
             opacity: 1;
             visibility: visible;

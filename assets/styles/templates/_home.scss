@@ -523,6 +523,61 @@
 }
 
 /* ---------------------------------------
+	Home News Slider
+--------------------------------------- */
+
+.home-news-slider {
+  .slick-slide {
+    outline: none;
+  }
+
+  .slick-list {
+    overflow: hidden;
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.home-news-slide {
+  width: 100%;
+  outline: none;
+}
+
+/* Custom dots for home news */
+.home-news-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0;
+  width: 100%;
+
+  .pagination-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 162, 255, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 162, 255, 0.6);
+      transform: scale(1.2);
+    }
+
+    &.active {
+      background-color: #00a2ff;
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* ---------------------------------------
 	Home News Grid - Same as News Page
 --------------------------------------- */
 

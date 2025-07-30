@@ -187,6 +187,51 @@ $(document).on('ready', function () {
   }
 
   /**
+   * Initialize home news slider (if not already initialized in template)
+   */
+  if (
+    $('#home-news-slider').length &&
+    typeof $.fn.slick === 'function' &&
+    !$('#home-news-slider').hasClass('slick-initialized')
+  ) {
+    $('#home-news-slider').slick({
+      dots: false,
+      arrows: false,
+      infinite: false,
+      speed: 600,
+      fade: false,
+      cssEase: 'ease',
+      autoplay: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      rows: 0,
+      adaptiveHeight: false,
+    });
+
+    // Custom dots functionality for home news
+    $('.home-news-dots .pagination-dot').on('click', function (e) {
+      e.preventDefault();
+      var slideIndex = $(this).data('slide');
+      $('#home-news-slider').slick('slickGoTo', slideIndex);
+
+      // Update active dot
+      $('.home-news-dots .pagination-dot').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    // Update dots on slide change
+    $('#home-news-slider').on(
+      'afterChange',
+      function (event, slick, currentSlide) {
+        $('.home-news-dots .pagination-dot').removeClass('active');
+        $('.home-news-dots .pagination-dot')
+          .eq(currentSlide)
+          .addClass('active');
+      }
+    );
+  }
+
+  /**
    * IE Object-fit cover polyfill
    */
   if ($('.of-cover').length) {
