@@ -19,7 +19,7 @@ get_header(); ?>
                 <?php } else { ?>
                     <p><?php _e('Sorry, no posts were found.', 'fwp'); ?></p>
                 <?php } ?>
-                <?php foundation_pagination(); ?>
+                <?php foundation_pagination($wp_query); ?>
             </div>
             <!-- END of blog content -->
 

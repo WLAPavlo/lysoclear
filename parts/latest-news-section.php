@@ -1,15 +1,21 @@
 <?php
+// Get ACF field values for Latest News section
+$latest_news_title = get_field('latest_news_title') ?: 'Latest News from Lysoclear';
+$posts_per_page = get_field('latest_news_posts_per_page') ?: 6;
+$total_posts = get_field('latest_news_total_posts') ?: 0;
 
-$posts_per_page_admin = get_option('posts_per_page'); // For pagination calculation
-$posts_per_page_display = 3; // Always show 3 posts on home page
+// Get current page
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
+// Query posts using ACF settings
 $latest_posts = new WP_Query([
     'post_type' => 'post',
-    'posts_per_page' => $posts_per_page_display,
+    'posts_per_page' => $posts_per_page,
+    'numberposts' => $total_posts > 0 ? $total_posts : -1,
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
-    'paged' => 1, // Always start from page 1 for home page
+    'paged' => $paged,
 ]);
 
 if ($latest_posts->have_posts()) { ?>
@@ -21,122 +27,23 @@ if ($latest_posts->have_posts()) { ?>
                     <div class="section-divider"></div>
 
                     <!-- Section title -->
-                    <h2 class="section-title">Latest News from Lysoclear</h2>
+                    <h2 class="section-title"><?php echo esc_html($latest_news_title); ?></h2>
 
-                    <!-- Home News Slider with AJAX pagination -->
-                    <div class="home-news-slider" id="home-news-slider">
-                        <div class="home-news-slide">
-                            <div class="home-news-grid">
-                                <div class="grid-x" id="home-news-posts-container">
-                                    <?php while ($latest_posts->have_posts()) {
-                                        $latest_posts->the_post();
-                                        ?>
-                                        <div class="cell large-4 medium-4 small-12">
-                                            <?php get_template_part('parts/loop', 'post'); ?>
-                                        </div>
-                                    <?php } ?>
+                    <!-- News Grid -->
+                    <div class="home-news-grid">
+                        <div class="grid-x">
+                            <?php while ($latest_posts->have_posts()) {
+                                $latest_posts->the_post();
+                                ?>
+                                <div class="cell large-4 medium-4 small-12">
+                                    <?php get_template_part('parts/loop', 'post'); ?>
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
-
-                        <?php
-                        // Calculate total pages based on admin setting but show 3 per slide
-                        $total_posts_query = new WP_Query([
-                            'post_type' => 'post',
-                            'posts_per_page' => -1,
-                            'post_status' => 'publish',
-                            'fields' => 'ids'
-                        ]);
-                        $total_posts = $total_posts_query->found_posts;
-                        wp_reset_postdata();
-
-                        // Calculate how many slides we need (3 posts per slide)
-                        $max_pages = ceil($total_posts / $posts_per_page_display);
-
-                        // But limit by admin setting for total posts to show
-                        $max_posts_to_show = $posts_per_page_admin;
-                        $actual_max_pages = ceil($max_posts_to_show / $posts_per_page_display);
-                        $max_pages = min($max_pages, $actual_max_pages);
-
-                        // Get additional pages if there are more posts
-                        $current_page = 2;
-                        while ($current_page <= $max_pages) {
-                            $additional_posts = new WP_Query([
-                                'post_type' => 'post',
-                                'posts_per_page' => $posts_per_page_display,
-                                'post_status' => 'publish',
-                                'orderby' => 'date',
-                                'order' => 'DESC',
-                                'paged' => $current_page,
-                            ]);
-
-                            if ($additional_posts->have_posts()) { ?>
-                                <div class="home-news-slide">
-                                    <div class="home-news-grid">
-                                        <div class="grid-x">
-                                            <?php while ($additional_posts->have_posts()) {
-                                                $additional_posts->the_post();
-                                                ?>
-                                                <div class="cell large-4 medium-4 small-12">
-                                                    <?php get_template_part('parts/loop', 'post'); ?>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php }
-                            wp_reset_postdata();
-                            $current_page++;
-                        }
-                        ?>
                     </div>
 
-                    <?php
-                    // Create a fake query for pagination
-                    if ($max_pages > 1) {
-                        $fake_query = new stdClass();
-                        $fake_query->max_num_pages = $max_pages;
-                        foundation_pagination($fake_query);
-                    }
-                    ?>
-
-                    <script>
-                        jQuery(document).ready(function($) {
-                            // Initialize home news slider
-                            if ($('#home-news-slider').length && typeof $.fn.slick === 'function') {
-                                $('#home-news-slider').slick({
-                                    dots: false, // We use custom dots
-                                    arrows: false,
-                                    infinite: false,
-                                    speed: 600,
-                                    fade: false,
-                                    cssEase: 'ease',
-                                    autoplay: false,
-                                    slidesToShow: 1,
-                                    slidesToScroll: 1,
-                                    rows: 0,
-                                    adaptiveHeight: false,
-                                });
-
-                                // Custom dots functionality
-                                $('.pagination-dots .pagination-dot').on('click', function(e) {
-                                    e.preventDefault();
-                                    var slideIndex = $(this).index();
-                                    $('#home-news-slider').slick('slickGoTo', slideIndex);
-
-                                    // Update active dot
-                                    $('.pagination-dots .pagination-dot').removeClass('active');
-                                    $(this).addClass('active');
-                                });
-
-                                // Update dots on slide change
-                                $('#home-news-slider').on('afterChange', function(event, slick, currentSlide) {
-                                    $('.pagination-dots .pagination-dot').removeClass('active');
-                                    $('.pagination-dots .pagination-dot').eq(currentSlide).addClass('active');
-                                });
-                            }
-                        });
-                    </script>
+                    <!-- Pagination using foundation_pagination -->
+                    <?php foundation_pagination($latest_posts); ?>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ get_header(); ?>
                         <?php get_template_part('parts/loop', 'post'); // Post item?>
                     <?php } ?>
                 <?php } ?>
-                <?php foundation_pagination(); ?>
+                <?php foundation_pagination($wp_query); ?>
             </div>
             <!-- END of Archive Content -->
             <!-- BEGIN of Sidebar -->

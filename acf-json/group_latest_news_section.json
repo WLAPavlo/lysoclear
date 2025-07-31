@@ -1,0 +1,85 @@
+{
+  "key": "group_latest_news_section",
+  "title": "Latest News Section",
+  "fields": [
+    {
+      "key": "field_latest_news_title",
+      "label": "Latest News Title",
+      "name": "latest_news_title",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "60",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Latest News from Lysoclear",
+      "placeholder": "Latest News from Lysoclear",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_latest_news_posts_per_page",
+      "label": "Posts Per Page",
+      "name": "latest_news_posts_per_page",
+      "type": "number",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "40",
+        "class": "",
+        "id": ""
+      },
+      "default_value": 3,
+      "placeholder": "3",
+      "prepend": "",
+      "append": "",
+      "min": 1,
+      "max": 20,
+      "step": 1
+    },
+    {
+      "key": "field_latest_news_total_posts",
+      "label": "Total Posts to Show",
+      "name": "latest_news_total_posts",
+      "type": "number",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "40",
+        "class": "",
+        "id": ""
+      },
+      "default_value": 9,
+      "placeholder": "9 = all posts",
+      "prepend": "",
+      "append": "",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/template-home.php"
+      }
+    ]
+  ],
+  "menu_order": 2,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "TMPL: Home Page",
+  "modified": 1640995500
+}

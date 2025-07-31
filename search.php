@@ -27,7 +27,7 @@ get_header(); ?>
                 <?php } else { ?>
                     <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'fwp'); ?></p>
                 <?php } ?>
-                <?php foundation_pagination(); ?>
+                <?php foundation_pagination($wp_query); ?>
             </main>
         </div>
         <!-- END of search results -->

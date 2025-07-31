@@ -1,11 +1,15 @@
 <?php
 // Get testimonials from custom post type
+$testimonials_per_page = 3; // Number of testimonials per page
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 $testimonials = new WP_Query([
     'post_type' => 'testimonial',
-    'posts_per_page' => 10,
+    'posts_per_page' => $testimonials_per_page,
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
+    'paged' => $paged,
 ]);
 
 if ($testimonials->have_posts()) { ?>
@@ -38,6 +42,9 @@ if ($testimonials->have_posts()) { ?>
                             </div>
                         <?php } ?>
                     </div>
+
+                    <!-- Add pagination for testimonials -->
+                    <?php foundation_pagination($testimonials); ?>
 
                     <script>
                         jQuery(document).ready(function($) {
